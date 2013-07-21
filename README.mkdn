@@ -1,0 +1,7 @@
+siphashc
+========
+
+python c-module for siphash, based on [floodberry's version][1].
+
+
+[1]: https://github.com/floodyberry/siphash
