@@ -46,8 +46,14 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
     return ret;
 }
 
+static char siphash_docstring[] = ""
+    "siphash(key, plaintext) -> hash\n"
+    " - key: must be 16 bytes long (16 chars at 8 bit each)\n"
+    " - plaintext: text\n\n"
+    "returns computed Siphash-2-4 of the given string and 16 byte key\n";
+
 static PyMethodDef module_methods[] = {
-    {"siphash", pysiphash, METH_VARARGS, "siphash(key, plaintext) -> hash"},
+    {"siphash", pysiphash, METH_VARARGS, siphash_docstring},
     {NULL, NULL, 0, NULL} /* sentinel */
 };
 
