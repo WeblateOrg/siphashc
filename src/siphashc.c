@@ -35,7 +35,9 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
     }
 
     if (strlen(key) != 16) {
-        PyErr_SetString(PyExc_ValueError, "key must be exactly 16 chars long");
+        PyErr_SetString(
+            PyExc_ValueError,
+            "key must be exactly 128 bits long (16 chars)");
         return NULL;
     }
 
@@ -47,10 +49,11 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
 }
 
 static char siphash_docstring[] = ""
+    "Computes Siphash-2-4 of the given string and key\n\n"
     "siphash(key, plaintext) -> hash\n"
-    " - key: must be 16 bytes long (16 chars at 8 bit each)\n"
-    " - plaintext: text\n\n"
-    "returns computed Siphash-2-4 of the given string and 16 byte key\n";
+    " - key: must be 128 bit long (16 chars at 8 bit each)\n"
+    " - plaintext: text\n"
+    "returns 64-bit output (python Long)\n";
 
 static PyMethodDef module_methods[] = {
     {"siphash", pysiphash, METH_VARARGS, siphash_docstring},

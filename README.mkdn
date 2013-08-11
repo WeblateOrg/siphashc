@@ -1,7 +1,15 @@
 siphashc
 ========
 
-python c-module for siphash, based on [floodberry's version][1].
+python c-module for [siphash][1], based on [floodberry's version][2].
 
+## Usage
 
-[1]: https://github.com/floodyberry/siphash
+~~~ python
+>>> from siphashc import siphash
+>>> siphash('sixteencharstrng', 'i need a hash of this')
+10796923698683394048L
+~~~
+
+[1]: https://131002.net/siphash/
+[2]: https://github.com/floodyberry/siphash
