@@ -42,7 +42,10 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
     }
 
     size_t l = strlen(plaintext);
-    uint64_t hash = siphash((const unsigned char*)key, (const unsigned char*)plaintext, l);
+    uint64_t hash = siphash(
+        (const unsigned char*)key,
+        (const unsigned char*)plaintext,
+        l);
 
     //PyObject *ret = Py_BuildValue("K", hash);
     //return ret;
