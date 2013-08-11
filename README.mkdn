@@ -3,7 +3,7 @@ siphashc
 
 python c-module for [siphash][1], based on [floodberry's version][2].
 
-## Usage
+### Usage
 
 ~~~ python
 >>> from siphashc import siphash
