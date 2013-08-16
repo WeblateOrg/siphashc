@@ -28,27 +28,28 @@
 
 static PyObject *pysiphash(PyObject *self, PyObject *args) {
     const char *key = NULL;
+    int key_sz;
     const char *plaintext = NULL;
+    int plain_sz;
 
-    if (!PyArg_ParseTuple(args, "ss", &key, &plaintext)) {
+    if (!PyArg_ParseTuple(
+            args, "s#s#:siphash",
+            &key, &key_sz, &plaintext, &plain_sz)) {
         return NULL;
     }
 
-    if (strlen(key) != 16) {
+    if (key_sz != 16) {
         PyErr_SetString(
             PyExc_ValueError,
             "key must be exactly 128 bits long (16 chars)");
         return NULL;
     }
 
-    size_t l = strlen(plaintext);
     uint64_t hash = siphash(
         (const unsigned char*)key,
         (const unsigned char*)plaintext,
-        l);
+        plain_sz);
 
-    //PyObject *ret = Py_BuildValue("K", hash);
-    //return ret;
     return PyLong_FromUnsignedLongLong(hash);
 }
 
