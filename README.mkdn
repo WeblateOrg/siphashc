@@ -3,6 +3,8 @@ siphashc
 
 python c-module for [siphash][1], based on [floodberry's version][2].
 
+[![Build Status](https://travis-ci.org/cactus/siphashc.png?branch=master)](https://travis-ci.org/cactus/siphashc)
+
 ### Usage
 
 ~~~ python
