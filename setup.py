@@ -39,11 +39,6 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 2.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        'License :: OSI Approved :: Apache Software License',
+        'License :: OSI Approved :: MIT License',
     ],
-    tests_require=[
-        'nose',
-        'unittest2',
-    ],
-    zip_safe=False,
 )
