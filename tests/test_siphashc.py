@@ -1,10 +1,11 @@
+import sys
+from siphashc import siphash
 ## we use some test harness stuff from python2.7.
 ## if not on 2.7, try importing unittest2 for compat
 if sys.version_info < (2, 7):
     import unittest2 as unittest
 else:
     import unittest
-from siphashc import siphash
 
 class TestSiphashC(unittest.TestCase):
     def test_hash(self):
