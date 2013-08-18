@@ -24,13 +24,14 @@ sipc = Extension(
     sources=[
         'src/siphash/siphash.c',
         'src/siphash/siphash.h',
+        'src/siphash/siphash_impl.h',
         'src/siphashc.c',
     ],
     language='c')
 
 setup(
     name='siphashc',
-    version='0.4',
+    version='0.5',
     description='python module (in c) for siphash-2-4',
     url='http://github.com/cactus/siphashc',
     license="MIT",
