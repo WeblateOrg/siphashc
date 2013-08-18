@@ -1,4 +1,4 @@
-from distutils.core import setup, Extension
+from setuptools import setup, find_packages, Extension
 
 long_description = """
 siphashc
@@ -41,4 +41,8 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
     ],
+    install_requires=[
+        'setuptools',
+    ],
+    zip_safe=False,
 )
