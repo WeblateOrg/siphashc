@@ -23,8 +23,6 @@ sipc = Extension(
     "siphashc",
     sources=[
         'src/siphash/siphash.c',
-        'src/siphash/siphash.h',
-        'src/siphash/siphash_impl.h',
         'src/siphashc.c',
     ],
     language='c')
