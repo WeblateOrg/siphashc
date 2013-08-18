@@ -44,5 +44,9 @@ setup(
     install_requires=[
         'setuptools',
     ],
+    test_require=[
+        'nose',
+        'unittest2',
+    ],
     zip_safe=False,
 )
