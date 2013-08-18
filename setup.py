@@ -26,7 +26,7 @@ sipc = Extension(
 
 setup(
     name='siphashc',
-    version='0.2',
+    version='0.3',
     description='python module (in c) for siphash-2-4',
     url='http://github.com/cactus/siphashc',
     license="MIT",
