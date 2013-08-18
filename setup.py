@@ -31,6 +31,7 @@ setup(
     url='http://github.com/cactus/siphashc',
     license="MIT",
     ext_modules=[sipc],
+    packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -43,6 +44,10 @@ setup(
     ],
     install_requires=[
         'setuptools',
+    ],
+    tests_require=[
+        'nose',
+        'unittest2',
     ],
     zip_safe=False,
 )
