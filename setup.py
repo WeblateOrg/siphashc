@@ -21,12 +21,16 @@ Usage
 
 sipc = Extension(
     "siphashc",
-    sources=['src/siphash/siphash.c', 'src/siphashc.c'],
+    sources=[
+        'src/siphash/siphash.c',
+        'src/siphash/siphash.h',
+        'src/siphashc.c',
+    ],
     language='c')
 
 setup(
     name='siphashc',
-    version='0.3',
+    version='0.4',
     description='python module (in c) for siphash-2-4',
     url='http://github.com/cactus/siphashc',
     license="MIT",
