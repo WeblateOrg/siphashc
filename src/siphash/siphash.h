@@ -2,6 +2,7 @@
 #define SIPHASH_H
 
 #if defined(_MSC_VER)
+    #include <stdio.h>
     typedef unsigned __int64 uint64_t;
 #else
     #include <stdint.h>

@@ -23,7 +23,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <Python.h>
-#include <inttypes.h>
 #include "siphash/siphash.h"
 
 static PyObject *pysiphash(PyObject *self, PyObject *args) {
@@ -31,6 +30,7 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
     int key_sz;
     const char *plaintext = NULL;
     int plain_sz;
+    uint64_t hash;
 
     if (!PyArg_ParseTuple(
             args, "s#s#:siphash",
@@ -45,7 +45,7 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
         return NULL;
     }
 
-    uint64_t hash = siphash(
+    hash = siphash(
         (const unsigned char*)key,
         (const unsigned char*)plaintext,
         plain_sz);
