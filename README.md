@@ -7,11 +7,15 @@ python c-module for [siphash][1], based on [floodberry's version][2].
 
 ### Usage
 
+#### Python2.7.x
+
 ~~~ python2.7.x
 >>> from siphashc import siphash
 >>> siphash('sixteencharstrng', 'i need a hash of this')
 10796923698683394048L
 ~~~
+
+#### Python3.4.x
 
 ~~~ python3.4.x
 >>> from siphashc import siphash
