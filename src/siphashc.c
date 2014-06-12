@@ -1,5 +1,6 @@
 /* 
  * Copyright (c) 2013 eli janssen
+ * Copyright (c) 2014 Carlo Pires (python3 support)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +25,17 @@
 #include <string.h>
 #include <Python.h>
 #include "siphash/siphash.h"
+
+struct module_state {
+    PyObject *error;
+};
+
+#if PY_MAJOR_VERSION >= 3
+	#define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
+#else
+	#define GETSTATE(m) (&_state)
+	static struct module_state _state;
+#endif
 
 static PyObject *pysiphash(PyObject *self, PyObject *args) {
     const char *key = NULL;
@@ -60,14 +72,65 @@ static char siphash_docstring[] = ""
     " - plaintext: text\n"
     "returns 64-bit output (python Long)\n";
 
-static PyMethodDef module_methods[] = {
+static PyMethodDef siphashc_methods[] = {
     {"siphash", pysiphash, METH_VARARGS, siphash_docstring},
     {NULL, NULL, 0, NULL} /* sentinel */
 };
 
-PyMODINIT_FUNC initsiphashc(void) {
-    PyObject *m = Py_InitModule3("siphashc", module_methods, "siphash");
-    if (m == NULL)
-        return;
+#if PY_MAJOR_VERSION >= 3
+	static int siphashc_traverse(PyObject *m, visitproc visit, void *arg) {
+		Py_VISIT(GETSTATE(m)->error);
+		return 0;
+	}
+
+	static int siphashc_clear(PyObject *m) {
+		Py_CLEAR(GETSTATE(m)->error);
+		return 0;
+	}
+
+	static struct PyModuleDef moduledef = {
+		    PyModuleDef_HEAD_INIT,
+		    "siphashc",
+		    NULL,
+		    sizeof(struct module_state),
+		    siphashc_methods,
+		    NULL,
+		    siphashc_traverse,
+		    siphashc_clear,
+		    NULL
+	};
+
+	#define INITERROR return NULL
+
+	PyObject *
+	PyInit_siphashc(void)
+#else
+	#define INITERROR return
+
+	void
+	initsiphashc(void)
+#endif
+{
+	struct module_state *st;
+
+#if PY_MAJOR_VERSION >= 3
+    PyObject *module = PyModule_Create(&moduledef);
+#else
+    PyObject *module = Py_InitModule("siphashc", siphashc_methods);
+#endif
+
+    if (module == NULL)
+        INITERROR;
+
+    st = GETSTATE(module);
+    st->error = PyErr_NewException("siphashc.Error", NULL, NULL);
+    if (st->error == NULL) {
+        Py_DECREF(module);
+        INITERROR;
+    }
+
+#if PY_MAJOR_VERSION >= 3
+    return module;
+#endif
 }
 

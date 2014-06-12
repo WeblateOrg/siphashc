@@ -1,19 +1,20 @@
-import sys
+import sys, unittest
 from siphashc import siphash
-## we use some test harness stuff from python2.7.
-## if not on 2.7, try importing unittest2 for compat
-if sys.version_info < (2, 7):
-    import unittest2 as unittest
+
+if sys.version_info.major < 3:
+    expected_hash1 = long('10796923698683394048L')
+    expected_hash2 = long('12398370950267227270L')
 else:
-    import unittest
+    expected_hash1 = 10796923698683394048
+    expected_hash2 = 12398370950267227270
 
 class TestSiphashC(unittest.TestCase):
     def test_hash(self):
         result = siphash('sixteencharstrng', 'i need a hash of this')
-        self.assertEqual(10796923698683394048L, result)
+        self.assertEqual(expected_hash1, result)
 
         result = siphash('0123456789ABCDEF', 'a')
-        self.assertEqual(12398370950267227270L, result)
+        self.assertEqual(expected_hash2, result)
 
     def test_errors(self):
         with self.assertRaises(ValueError):
@@ -49,6 +50,12 @@ class TestSiphashC(unittest.TestCase):
           0x958a324ceb064572]
         k = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f'
         m = ''
-        for i in xrange(64):
+        for i in range(64):
             self.assertEqual(siphash(k, m), vectors[i])
             m += chr(i)
+
+def suite():
+    loader = unittest.TestLoader()
+    suite = unittest.TestSuite()
+    suite.addTest(loader.loadTestsFromTestCase(TestSiphashC))
+    return suite

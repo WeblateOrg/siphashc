@@ -3,3 +3,5 @@
 /MANIFEST
 /siphashc.so
 *.py[co]
+.project
+.pydevproject
