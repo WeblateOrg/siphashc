@@ -31,7 +31,7 @@ from setuptools import setup, Extension
 
 setup(
     name='siphashc3',
-    version=2,
+    version=3,
     description='Python module (in c) for siphash-2-4',
     long_description=__doc__,
     url='http://github.com/carlopires/siphashc3',
