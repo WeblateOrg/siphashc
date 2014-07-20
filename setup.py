@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages, Extension
 
 long_description = """
-siphashc
-========
+siphashc3
+=========
 
 python c-module for `siphash`_, based on `floodberry's version`_.
 
@@ -26,10 +26,10 @@ Usage
 """.strip()
 
 setup(
-    name='siphashc',
-    version='0.7',
-    description='python module (in c) for siphash-2-4',
-    url='http://github.com/cactus/siphashc',
+    name='siphashc3',
+    version=1,
+    description='Python module (in c) for siphash-2-4',
+    url='http://github.com/carlopires/siphashc3',
     license="MIT",
     ext_modules = [
         Extension(name="siphashc", sources=["src/siphashc.c", "src/siphash/siphash.c"], language="c"),
