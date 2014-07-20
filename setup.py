@@ -1,6 +1,4 @@
-from setuptools import setup, find_packages, Extension
-
-long_description = """
+"""
 siphashc3
 =========
 
@@ -23,18 +21,23 @@ Usage
 
 .. _siphash: https://131002.net/siphash/
 .. _floodberry's version: https://github.com/floodyberry/siphash
-""".strip()
+"""
+from setuptools import setup, Extension
 
 setup(
     name='siphashc3',
-    version=1,
+    version=2,
     description='Python module (in c) for siphash-2-4',
+    long_description=__doc__,
     url='http://github.com/carlopires/siphashc3',
+    author='Carlo Pires',
+    author_email='carlopires@gmail.com',
     license="MIT",
     ext_modules = [
-        Extension(name="siphashc", sources=["src/siphashc.c", "src/siphash/siphash.c"], language="c"),
+        Extension(name="siphashc", 
+                  sources=["siphashc.c", "siphash/siphash.c"], 
+                  language="c"),
     ],
-    packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -44,9 +47,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
-    ],
-    install_requires=[
-        'setuptools',
     ],
     test_suite='tests.suite',
     zip_safe=False,

@@ -1,6 +1,6 @@
 /* 
- * Copyright (c) 2013 eli janssen
- * Copyright (c) 2014 Carlo Pires (python3 support)
+ * Copyright (c) 2013 Eli Janssen
+ * Copyright (c) 2014 Carlo Pires
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal

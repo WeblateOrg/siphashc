@@ -1,7 +1,8 @@
-/build
-/dist
-/MANIFEST
-/siphashc.so
-*.py[co]
+__pycache__
 .project
 .pydevproject
+.settings
+*.pyc
+*egg-info
+build
+dist
