@@ -1,5 +1,5 @@
-siphashc
-========
+siphashc3
+=========
 
 python c-module for [siphash][1], based on [floodberry's version][2].
 
