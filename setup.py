@@ -25,6 +25,9 @@ sipc = Extension(
         'src/siphash/siphash.c',
         'src/siphashc.c',
     ],
+    include_dirs=[
+        'src/siphash'
+    ],
     language='c')
 
 setup(
