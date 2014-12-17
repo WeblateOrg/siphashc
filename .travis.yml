@@ -4,6 +4,7 @@ python:
     - "2.7"
 install:
     - pip install --use-mirrors unittest2
+sudo: false
 script:
     - python setup.py build_ext -i
     - python -m compileall -f .
