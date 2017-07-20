@@ -3,5 +3,5 @@ __pycache__
 /build
 /dist
 /MANIFEST
-/siphashc.so
+/siphashc*.so
 *.py[co]
