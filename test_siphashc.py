@@ -1,5 +1,6 @@
-import sys, unittest
+import unittest
 from siphashc import siphash
+
 
 class TestSiphashC(unittest.TestCase):
     def test_hash(self):
