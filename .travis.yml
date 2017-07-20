@@ -6,7 +6,6 @@ python:
     - "3.5"
 sudo: false
 script:
-    - python setup.py build_ext -i
-    - python -m compileall -f .
+    - python setup.py build
     - python setup.py test
     - python benchmark.py
