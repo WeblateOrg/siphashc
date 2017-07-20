@@ -1,20 +1,13 @@
 import sys, unittest
 from siphashc import siphash
 
-if sys.version_info.major < 3:
-    expected_hash1 = long('10796923698683394048L')
-    expected_hash2 = long('12398370950267227270L')
-else:
-    expected_hash1 = 10796923698683394048
-    expected_hash2 = 12398370950267227270
-
 class TestSiphashC(unittest.TestCase):
     def test_hash(self):
         result = siphash('sixteencharstrng', 'i need a hash of this')
-        self.assertEqual(expected_hash1, result)
+        self.assertEqual(10796923698683394048, result)
 
         result = siphash('0123456789ABCDEF', 'a')
-        self.assertEqual(expected_hash2, result)
+        self.assertEqual(12398370950267227270, result)
 
     def test_errors(self):
         with self.assertRaises(ValueError):
