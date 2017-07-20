@@ -2,7 +2,7 @@
 #include "siphash_impl.h"
 
 
-static uint64_t INLINE
+inline static uint64_t INLINE
 U8TO64_LE(const unsigned char *p) {
     return *(const uint64_t *)p;
 }

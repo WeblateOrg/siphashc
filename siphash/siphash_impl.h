@@ -12,7 +12,7 @@
     #define MM16 __declspec(align(16))
 
     typedef unsigned int uint32_t;
-    
+
     #if (_MSC_VER >= 1500)
         #define __SSSE3__
     #endif
@@ -20,7 +20,7 @@
         #define __SSE2__
     #endif
 #else
-    #define INLINE inline __attribute__((always_inline))
+    #define INLINE __attribute__((always_inline))
     #define NOINLINE __attribute__((noinline))
     #define ROTL64(a,b) (((a)<<(b))|((a)>>(64-b)))
     #define MM16 __attribute__((aligned(16)))
@@ -33,12 +33,12 @@
 
     typedef union packedelem64_t {
         uint64_t u[2];
-        xmmi v; 
+        xmmi v;
     } packedelem64;
-    
+
     typedef union packedelem8_t {
         unsigned char u[16];
-        xmmi v; 
+        xmmi v;
     } packedelem8;
 #endif
 
