@@ -3,6 +3,7 @@ siphashc
 
 python c-module for [siphash][1], based on [floodberry's version][2].
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5c85ea9de2884e6f88b23ccf240e6d05)](https://www.codacy.com/app/nijel/siphashc-merge?utm_source=github.com&utm_medium=referral&utm_content=nijel/siphashc-merge&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/nijel/siphashc-merge.svg?branch=master)](https://travis-ci.org/nijel/siphashc-merge)
 [![Build status](https://ci.appveyor.com/api/projects/status/kgeohtb6as3xd9b7/branch/master?svg=true)](https://ci.appveyor.com/project/nijel/siphashc-merge/branch/master)
 
