@@ -71,7 +71,7 @@ static PyMethodDef siphashc_methods[] = {
 		    PyModuleDef_HEAD_INIT,
 		    "siphashc",
 		    NULL,
-		    sizeof(struct module_state),
+            -1,
 		    siphashc_methods,
 		    NULL,
 		    NULL,
