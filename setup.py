@@ -53,6 +53,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
     ],
-    test_suite='tests.suite',
+    test_suite='test_siphashc',
     zip_safe=False,
 )

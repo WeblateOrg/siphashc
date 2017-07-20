@@ -46,9 +46,3 @@ class TestSiphashC(unittest.TestCase):
         for i in range(64):
             self.assertEqual(siphash(k, m), vectors[i])
             m += chr(i)
-
-def suite():
-    loader = unittest.TestLoader()
-    suite = unittest.TestSuite()
-    suite.addTest(loader.loadTestsFromTestCase(TestSiphashC))
-    return suite
