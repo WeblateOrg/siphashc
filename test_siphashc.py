@@ -1,9 +1,13 @@
+"""Test for siphashc module."""
 import unittest
 from siphashc import siphash
 
 
 class TestSiphashC(unittest.TestCase):
+    """Test for siphashc module."""
+
     def test_hash(self):
+        """Test simple hashing."""
         result = siphash('sixteencharstrng', 'i need a hash of this')
         self.assertEqual(10796923698683394048, result)
 
@@ -11,6 +15,7 @@ class TestSiphashC(unittest.TestCase):
         self.assertEqual(12398370950267227270, result)
 
     def test_errors(self):
+        """Test error handling."""
         with self.assertRaises(ValueError):
             siphash('not long enough', 'a')
         with self.assertRaises(ValueError):
@@ -19,6 +24,7 @@ class TestSiphashC(unittest.TestCase):
             siphash('', 'a')
 
     def test_reference_vectors(self):
+        """Test refernce vectors."""
         vectors = [
             0x726fdb47dd0e0e31, 0x74f839c593dc67fd, 0x0d6c8009d9a94f5a,
             0x85676696d7fb7e2d, 0xcf2794e0277187b7, 0x18765564cd99a68d,
