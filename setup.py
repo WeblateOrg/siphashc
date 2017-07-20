@@ -36,10 +36,12 @@ setup(
     long_description=__doc__.strip(),
     url='http://github.com/cactus/siphashc',
     license="MIT",
-    ext_modules = [
-        Extension(name="siphashc",
-                  sources=["siphashc.c", "siphash/siphash.c"],
-                  language="c"),
+    ext_modules=[
+        Extension(
+            name="siphashc",
+            sources=["siphashc.c", "siphash/siphash.c"],
+            language="c"
+        ),
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
