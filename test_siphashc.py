@@ -50,7 +50,7 @@ class TestSiphashC(unittest.TestCase):
             0x958a324ceb064572
         ]
         k = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f'
-        m = ''
+        message = ''
         for i in range(64):
-            self.assertEqual(siphash(k, m), vectors[i])
-            m += chr(i)
+            self.assertEqual(siphash(k, message), vectors[i])
+            message += chr(i)
