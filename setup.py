@@ -30,17 +30,15 @@ Python 3
 from setuptools import setup, Extension
 
 setup(
-    name='siphashc3',
-    version=3,
+    name='siphashc',
+    version='0.7',
     description='Python module (in c) for siphash-2-4',
-    long_description=__doc__,
-    url='http://github.com/carlopires/siphashc3',
-    author='Carlo Pires',
-    author_email='carlopires@gmail.com',
+    long_description=__doc__.strip(),
+    url='http://github.com/cactus/siphashc',
     license="MIT",
     ext_modules = [
-        Extension(name="siphashc", 
-                  sources=["siphashc.c", "siphash/siphash.c"], 
+        Extension(name="siphashc",
+                  sources=["siphashc.c", "siphash/siphash.c"],
                   language="c"),
     ],
     classifiers=[
