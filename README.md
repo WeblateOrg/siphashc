@@ -1,9 +1,15 @@
-siphashc3
-=========
+siphashc
+========
 
 python c-module for [siphash][1], based on [floodberry's version][2].
 
-[![Build Status](https://travis-ci.org/carlopires/siphashc3.png?branch=master)](https://travis-ci.org/carlopires/siphashc3)
+[![Build Status](https://travis-ci.org/nijel/siphashc-merge.svg?branch=master)](https://travis-ci.org/nijel/siphashc-merge)
+[![Build status](https://ci.appveyor.com/api/projects/status/kgeohtb6as3xd9b7/branch/master?svg=true)](https://ci.appveyor.com/project/nijel/siphashc-merge/branch/master)
+
+This is attempt to merge two versions of the module:
+
+* https://github.com/cactus/siphashc
+* https://github.com/carlopires/siphashc3
 
 ### Usage
 
