@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 from __future__ import print_function
 import timeit
-import siphashc
 
 print('Benchmark (short):')
 print(timeit.timeit(
-    "from siphashc import siphash; siphash('0123456789ABCDEF', 'a')"
+    "siphash('0123456789ABCDEF', 'a')",
+    "from siphashc import siphash"
 ))
 print('Benchmark (long):')
 print(timeit.timeit(
-    "from siphashc import siphash; siphash('0123456789ABCDEF', 'a' * 1000)"
+    "siphash('0123456789ABCDEF', 'a' * 1000)",
+    "from siphashc import siphash"
 ))
