@@ -8,6 +8,7 @@ Usage
 ~~~~~
 
 Python 2
+--------
 
 .. code:: python
 
@@ -16,6 +17,7 @@ Python 2
     10796923698683394048L
 
 Python 3
+--------
 
 .. code:: python
 
