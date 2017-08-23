@@ -4,7 +4,8 @@ siphashc
 ## Current status of project
 
 Ownership of the project (and pypi package) has transferred to Michal Čihař
-([nijel][4]). [WeblateOrg/siphashc][5] is now the canonical location.
+([nijel][4]).  
+[WeblateOrg/siphashc][5] is now the canonical location.
 
 
 ### Introduction
