@@ -1,9 +1,19 @@
 siphashc
 ========
 
-python c-module for [siphash][1], based on [floodberry's version][2].
+## Current status of project
+
+Ownership of the project (and pypi package) has transferred to Michal Čihař
+([nijel][4]). [WeblateOrg/siphashc][5] is now the canonical location.
+
+
+### Introduction
 
 [![Build Status](https://travis-ci.org/cactus/siphashc.png?branch=master)](https://travis-ci.org/cactus/siphashc)
+
+siphashc is a python2 c-module for [siphash][1], based on [floodberry's
+version][2].
+
 
 ### Usage
 
@@ -13,16 +23,12 @@ python c-module for [siphash][1], based on [floodberry's version][2].
 10796923698683394048L
 ~~~
 
-### Python3
-
-For python3 support, [siphashc3][3] is currently recommended.
-
 ### License
 
-Released under the [MIT
-license](http://www.opensource.org/licenses/mit-license.php). See `LICENSE.md`
-file for details.
+Released under the [MIT license][3]. See `LICENSE.md` file for details.
 
 [1]: https://131002.net/siphash/
 [2]: https://github.com/floodyberry/siphash
-[3]: https://github.com/carlopires/siphashc3
+[3]: http://www.opensource.org/licenses/mit-license.php
+[4]: https://github.com/nijel
+[5]: https://github.com/WeblateOrg/siphashc
