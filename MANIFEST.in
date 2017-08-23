@@ -1,1 +1,1 @@
-recursive-include src *.h
+include siphash/*.h

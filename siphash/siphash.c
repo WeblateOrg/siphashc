@@ -2,17 +2,10 @@
 #include "siphash_impl.h"
 
 
-static uint64_t INLINE
+INLINE static uint64_t
 U8TO64_LE(const unsigned char *p) {
     return *(const uint64_t *)p;
 }
-
-/*
-static void INLINE
-U64TO8_LE(unsigned char *p, const uint64_t v) {
-    *(uint64_t *)p = v;
-}
-*/
 
 uint64_t
 siphash(const unsigned char key[16], const unsigned char *m, size_t len) {

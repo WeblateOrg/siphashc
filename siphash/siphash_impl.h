@@ -20,7 +20,7 @@
         #define __SSE2__
     #endif
 #else
-    #define INLINE __attribute__((always_inline))
+    #define INLINE inline __attribute__((always_inline))
     #define NOINLINE __attribute__((noinline))
     #define ROTL64(a,b) (((a)<<(b))|((a)>>(64-b)))
     #define MM16 __attribute__((aligned(16)))

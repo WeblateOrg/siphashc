@@ -1,16 +1,18 @@
-/* 
- * Copyright (c) 2013 eli janssen
- * 
+/*
+ * Copyright (c) 2013 Eli Janssen
+ * Copyright (c) 2014 Carlo Pires
+ * Copyright (c) 2017 Michal Čihař
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -60,14 +62,47 @@ static char siphash_docstring[] = ""
     " - plaintext: text\n"
     "returns 64-bit output (python Long)\n";
 
-static PyMethodDef module_methods[] = {
+static PyMethodDef siphashc_methods[] = {
     {"siphash", pysiphash, METH_VARARGS, siphash_docstring},
     {NULL, NULL, 0, NULL} /* sentinel */
 };
 
-PyMODINIT_FUNC initsiphashc(void) {
-    PyObject *m = Py_InitModule3("siphashc", module_methods, "siphash");
-    if (m == NULL)
-        return;
+#if PY_MAJOR_VERSION >= 3
+	static struct PyModuleDef moduledef = {
+		    PyModuleDef_HEAD_INIT,
+		    "siphashc",
+		    NULL,
+            -1,
+		    siphashc_methods,
+		    NULL,
+		    NULL,
+		    NULL,
+		    NULL
+	};
+
+	#define INITERROR return NULL
+
+	PyObject *
+	PyInit_siphashc(void)
+#else
+	#define INITERROR return
+
+	void
+	initsiphashc(void)
+#endif
+{
+    PyObject *module;
+#if PY_MAJOR_VERSION >= 3
+    module = PyModule_Create(&moduledef);
+#else
+    module = Py_InitModule("siphashc", siphashc_methods);
+#endif
+
+    if (module == NULL)
+        INITERROR;
+
+#if PY_MAJOR_VERSION >= 3
+    return module;
+#endif
 }
 

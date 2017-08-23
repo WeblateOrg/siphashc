@@ -1,6 +1,7 @@
+__pycache__
+*egg-info
 /build
 /dist
 /MANIFEST
-/siphashc.so
-/siphashc.egg-info
+/siphashc*.so
 *.py[co]

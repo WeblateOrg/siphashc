@@ -1,13 +1,14 @@
-from setuptools import setup, find_packages, Extension
-
-long_description = """
-siphashc
-========
+"""
+siphashc3
+=========
 
 python c-module for `siphash`_, based on `floodberry's version`_.
 
 Usage
 ~~~~~
+
+Python 2
+--------
 
 .. code:: python
 
@@ -15,45 +16,45 @@ Usage
     >>> siphash('sixteencharstrng', 'i need a hash of this')
     10796923698683394048L
 
+Python 3
+--------
+
+.. code:: python
+
+    >>> from siphashc import siphash
+    >>> siphash('sixteencharstrng', 'i need a hash of this')
+    10796923698683394048
+
+
 .. _siphash: https://131002.net/siphash/
 .. _floodberry's version: https://github.com/floodyberry/siphash
-""".strip()
-
-sipc = Extension(
-    "siphashc",
-    sources=[
-        'src/siphash/siphash.c',
-        'src/siphashc.c',
-    ],
-    include_dirs=[
-        'src/siphash'
-    ],
-    language='c')
+"""
+from setuptools import setup, Extension
 
 setup(
     name='siphashc',
     version='0.7',
-    description='python module (in c) for siphash-2-4',
+    description='Python module (in c) for siphash-2-4',
+    long_description=__doc__.strip(),
     url='http://github.com/cactus/siphashc',
     license="MIT",
-    ext_modules=[sipc],
-    packages=find_packages(),
+    ext_modules=[
+        Extension(
+            name="siphashc",
+            sources=["siphashc.c", "siphash/siphash.c"],
+            language="c"
+        ),
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
     ],
-    install_requires=[
-        'setuptools',
-    ],
-    tests_require=[
-        'nose',
-        'unittest2',
-    ],
+    test_suite='test_siphashc',
     zip_safe=False,
 )
