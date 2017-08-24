@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 siphashc3
 =========
@@ -34,9 +35,13 @@ from setuptools import setup, Extension
 setup(
     name='siphashc',
     version='0.8',
+    author='Michal Čihař',
+    author_email='michal@cihar.com',
     description='Python module (in c) for siphash-2-4',
     long_description=__doc__.strip(),
+    keywords='siphash siphash-2-4',
     url='https://github.com/WeblateOrg/siphashc',
+    bugtrack_url='https://github.com/WeblateOrg/siphashc/issues',
     license="MIT",
     ext_modules=[
         Extension(
@@ -56,5 +61,5 @@ setup(
         'License :: OSI Approved :: MIT License',
     ],
     test_suite='test_siphashc',
-    zip_safe=False,
+    zip_safe=True,
 )
