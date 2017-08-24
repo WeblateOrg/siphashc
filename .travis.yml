@@ -10,6 +10,7 @@ python:
 matrix:
   include:
     - os: osx
+      language: generic
 script:
     - CFLAGS="-Wall -Wextra -Wno-unused-parameter" python setup.py build
     - python setup.py test
