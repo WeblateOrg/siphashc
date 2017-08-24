@@ -33,7 +33,7 @@ from setuptools import setup, Extension
 
 setup(
     name='siphashc',
-    version='0.7',
+    version='0.8',
     description='Python module (in c) for siphash-2-4',
     long_description=__doc__.strip(),
     url='http://github.com/cactus/siphashc',
