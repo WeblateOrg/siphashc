@@ -10,6 +10,21 @@ siphashc
 .. image:: https://api.codacy.com/project/badge/Grade/33758f86fbf44e929d85f47390093771    
     :target: https://www.codacy.com/app/Weblate/siphashc
 
+.. image:: https://img.shields.io/pypi/dm/siphashc.svg
+    :target: https://pypi.python.org/pypi/siphashc
+    :alt: PyPI package
+
+Installation
+~~~~~~~~~~~~
+
+Install using pip:
+
+.. code-block:: sh
+
+    pip install siphashc
+
+Sources are available at <https://github.com/WeblateOrg/siphashc>.
+
 Introduction
 ~~~~~~~~~~~~
 
