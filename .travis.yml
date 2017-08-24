@@ -10,13 +10,6 @@ python:
 matrix:
   include:
     - os: osx
-      language: generic
-      # Perform the manual steps on osx to install python3 and activate venv
-      before_install:
-        - brew update
-        - brew install python3
-        - virtualenv venv -p python3
-        - source venv/bin/activate
 script:
     - CFLAGS="-Wall -Wextra -Wno-unused-parameter" python setup.py build
     - python setup.py test
