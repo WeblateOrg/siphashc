@@ -27,9 +27,9 @@ It was merged from two versions of the module:
 10796923698683394048L
 ~~~
 
-#### Python3.4.x
+#### Python3.x
 
-~~~ python3.4.x
+~~~ python3.x
 >>> from siphashc import siphash
 >>> siphash('sixteencharstrng', 'i need a hash of this')
 10796923698683394048
