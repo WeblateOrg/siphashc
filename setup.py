@@ -9,7 +9,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 
 setup(
     name='siphashc',
-    version='0.8',
+    version='1.0',
     author='Michal Čihař',
     author_email='michal@cihar.com',
     description='Python module (in c) for siphash-2-4',
@@ -26,7 +26,7 @@ setup(
         ),
     ],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
