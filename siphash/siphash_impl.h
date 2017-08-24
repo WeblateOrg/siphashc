@@ -12,7 +12,7 @@
     #define MM16 __declspec(align(16))
 
     typedef unsigned int uint32_t;
-    
+
     #if (_MSC_VER >= 1500)
         #define __SSSE3__
     #endif
@@ -26,6 +26,19 @@
     #define MM16 __attribute__((aligned(16)))
 #endif
 
+#define FALLTHROUGH
+#if defined(__clang__)
+#  if defined(__has_cpp_attribute)
+#    if __has_cpp_attribute(clang::fallthrough)
+#      undef FALLTHROUGH
+#      define FALLTHROUGH [[clang::fallthrough]]
+#    endif
+#  endif
+#elif defined(__GNUC__)
+#undef FALLTHROUGH
+#define FALLTHROUGH __attribute__ ((fallthrough))
+#endif
+
 #if defined(__SSE2__)
     #include <emmintrin.h>
     typedef __m128i xmmi;
@@ -33,12 +46,12 @@
 
     typedef union packedelem64_t {
         uint64_t u[2];
-        xmmi v; 
+        xmmi v;
     } packedelem64;
-    
+
     typedef union packedelem8_t {
         unsigned char u[16];
-        xmmi v; 
+        xmmi v;
     } packedelem8;
 #endif
 

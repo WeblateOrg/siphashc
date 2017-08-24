@@ -42,13 +42,27 @@ siphash(const unsigned char key[16], const unsigned char *m, size_t len) {
     }
 
     switch (len - blocks) {
-        case 7: last7 |= (uint64_t)m[i + 6] << 48;
-        case 6: last7 |= (uint64_t)m[i + 5] << 40;
-        case 5: last7 |= (uint64_t)m[i + 4] << 32;
-        case 4: last7 |= (uint64_t)m[i + 3] << 24;
-        case 3: last7 |= (uint64_t)m[i + 2] << 16;
-        case 2: last7 |= (uint64_t)m[i + 1] <<  8;
-        case 1: last7 |= (uint64_t)m[i + 0]      ;
+        case 7:
+            last7 |= (uint64_t)m[i + 6] << 48;
+            FALLTHROUGH;
+        case 6:
+            last7 |= (uint64_t)m[i + 5] << 40;
+            FALLTHROUGH;
+        case 5:
+            last7 |= (uint64_t)m[i + 4] << 32;
+            FALLTHROUGH;
+        case 4:
+            last7 |= (uint64_t)m[i + 3] << 24;
+            FALLTHROUGH;
+        case 3:
+            last7 |= (uint64_t)m[i + 2] << 16;
+            FALLTHROUGH;
+        case 2:
+            last7 |= (uint64_t)m[i + 1] <<  8;
+            FALLTHROUGH;
+        case 1:
+            last7 |= (uint64_t)m[i + 0]      ;
+            FALLTHROUGH;
         case 0:
         default:;
     };
