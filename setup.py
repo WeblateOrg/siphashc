@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import io
 import os.path
 from setuptools import setup, Extension
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+with io.open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8') as readme:
     LONG_DESCRIPTION = readme.read()
 
 setup(
