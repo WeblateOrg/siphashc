@@ -1,1 +1,3 @@
 include siphash/*.h
+include LICENSE.md
+include README.rst
