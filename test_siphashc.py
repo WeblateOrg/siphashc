@@ -24,7 +24,7 @@ class TestSiphashC(unittest.TestCase):
             siphash('', 'a')
 
     def test_reference_vectors(self):
-        """Test refernce vectors."""
+        """Test reference vectors."""
         vectors = [
             0x726fdb47dd0e0e31, 0x74f839c593dc67fd, 0x0d6c8009d9a94f5a,
             0x85676696d7fb7e2d, 0xcf2794e0277187b7, 0x18765564cd99a68d,
