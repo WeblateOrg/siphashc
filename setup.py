@@ -10,7 +10,7 @@ with io.open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='ut
 
 setup(
     name='siphashc',
-    version='1.1',
+    version='1.2',
     author='Michal Čihař',
     author_email='michal@cihar.com',
     description='Python module (in c) for siphash-2-4',
