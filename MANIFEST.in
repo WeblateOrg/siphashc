@@ -1,3 +1,4 @@
 include siphash/*.h
+include test_siphashc.py
 include LICENSE.md
 include README.rst
