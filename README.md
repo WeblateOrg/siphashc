@@ -10,8 +10,6 @@ Ongoing maintenance of the project (and pypi package) has transferred to Michal
 
 ### Introduction
 
-[![Build Status](https://travis-ci.org/cactus/siphashc.png?branch=master)](https://travis-ci.org/cactus/siphashc)
-
 siphashc is a python2 c-module for [siphash][1], based on [floodberry's
 version][2].
 
