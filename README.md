@@ -26,10 +26,10 @@ version][2].
 
 ### License
 
-Released under the [MIT license][3]. See `LICENSE.md` file for details.
+Released under the [ISC license][3]. See `LICENSE.md` file for details.
 
 [1]: https://131002.net/siphash/
 [2]: https://github.com/floodyberry/siphash
-[3]: http://www.opensource.org/licenses/mit-license.php
+[3]: https://choosealicense.com/licenses/isc/
 [4]: https://github.com/nijel
 [5]: https://github.com/WeblateOrg/siphashc
