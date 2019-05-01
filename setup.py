@@ -35,7 +35,7 @@ setup(
     version='0.7',
     description='python module (in c) for siphash-2-4',
     url='http://github.com/cactus/siphashc',
-    license="MIT",
+    license="ISC",
     ext_modules=[sipc],
     packages=find_packages(),
     classifiers=[
