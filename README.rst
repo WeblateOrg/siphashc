@@ -4,12 +4,6 @@ siphashc
 .. image:: https://travis-ci.org/WeblateOrg/siphashc.svg?branch=master
     :target: https://travis-ci.org/WeblateOrg/siphashc
 
-.. image:: https://ci.appveyor.com/api/projects/status/kgeohtb6as3xd9b7/branch/master?svg=true
-    :target: https://ci.appveyor.com/project/nijel/siphashc-merge/branch/master
-
-.. image:: https://api.codacy.com/project/badge/Grade/33758f86fbf44e929d85f47390093771    
-    :target: https://www.codacy.com/app/Weblate/siphashc
-
 .. image:: https://img.shields.io/pypi/v/siphashc.svg
     :target: https://pypi.python.org/pypi/siphashc
     :alt: PyPI package
