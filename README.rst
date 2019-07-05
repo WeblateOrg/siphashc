@@ -55,6 +55,6 @@ Python 3
 License
 ~~~~~~~
 
-Released under the `MIT
-license <http://www.opensource.org/licenses/mit-license.php>`__. See
+Released under the `ISC
+license <https://choosealicense.com/licenses/isc/>`__. See
 ``LICENSE.md`` file for details.

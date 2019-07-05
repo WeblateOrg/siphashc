@@ -18,7 +18,7 @@ setup(
     keywords='siphash siphash-2-4',
     url='https://github.com/WeblateOrg/siphashc',
     bugtrack_url='https://github.com/WeblateOrg/siphashc/issues',
-    license="MIT",
+    license="ISC",
     ext_modules=[
         Extension(
             name="siphashc",
@@ -34,7 +34,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: ISC License',
     ],
     test_suite='test_siphashc',
     zip_safe=True,
