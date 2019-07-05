@@ -1,6 +1,11 @@
 Changes
 =======
 
+1.3
+---
+
+* Changed license to ISC.
+
 1.2
 ---
 
