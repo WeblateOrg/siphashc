@@ -1,8 +1,8 @@
 siphashc
 ========
 
-.. image:: https://travis-ci.org/WeblateOrg/siphashc.svg?branch=master
-    :target: https://travis-ci.org/WeblateOrg/siphashc
+.. image:: https://travis-ci.com/WeblateOrg/siphashc.svg?branch=master
+    :target: https://travis-ci.com/WeblateOrg/siphashc
 
 .. image:: https://img.shields.io/pypi/v/siphashc.svg
     :target: https://pypi.python.org/pypi/siphashc
