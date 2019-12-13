@@ -1,15 +1,11 @@
 Changes
 =======
 
-1.4
----
-
-* Fixed depreciation warning on Python 3.8.
-
 1.3
 ---
 
 * Changed license to ISC.
+* Fixed depreciation warning on Python 3.8.
 
 1.2
 ---
