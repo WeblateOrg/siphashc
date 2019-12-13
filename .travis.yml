@@ -12,13 +12,13 @@ matrix:
   include:
     - os: osx
       language: sh
-      python: "2.7"
+      python: "3.8"
       # Perform the manual steps on osx to install python2 and activate venv
       before_install:
         - brew update
-        - brew upgrade python2
-        - python2 -m pip install virtualenv
-        - virtualenv .venv -p python2
+        - brew upgrade python3
+        - python3 -m pip install virtualenv
+        - virtualenv .venv -p python3
         - source .venv/bin/activate
     - os: windows
       language: sh
