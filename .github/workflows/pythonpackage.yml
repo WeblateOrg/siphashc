@@ -20,8 +20,6 @@ jobs:
     - name: Compile
       run: |
         CFLAGS="-Wall -Wextra -Wno-unused-parameter" python setup.py build
-        python -m pip install --upgrade pip wheel
-        pip install -r requirements.txt -r requirements-test.txt -r requirements-ci.txt
     - name: Lint with flake8
       run: |
         flake8
@@ -38,4 +36,5 @@ jobs:
     - name: Check sdist
       run: |
         python ./setup.py sdist
+        pip install twine
         twine check dist/*
