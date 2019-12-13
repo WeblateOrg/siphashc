@@ -45,7 +45,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Topic :: Software Development :: Libraries :: Python Modules",
-        "License :: OSI Approved :: ISC License",
+        "License :: OSI Approved :: ISC License (ISCL)",
     ],
     test_suite="test_siphashc",
     zip_safe=True,
