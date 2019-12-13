@@ -1,5 +1,6 @@
 """Test for siphashc module."""
 import unittest
+
 from siphashc import siphash
 
 
@@ -8,49 +9,91 @@ class TestSiphashC(unittest.TestCase):
 
     def test_hash(self):
         """Test simple hashing."""
-        result = siphash('sixteencharstrng', 'i need a hash of this')
+        result = siphash("sixteencharstrng", "i need a hash of this")
         self.assertEqual(10796923698683394048, result)
 
-        result = siphash('0123456789ABCDEF', 'a')
+        result = siphash("0123456789ABCDEF", "a")
         self.assertEqual(12398370950267227270, result)
 
     def test_errors(self):
         """Test error handling."""
         with self.assertRaises(ValueError):
-            siphash('not long enough', 'a')
+            siphash("not long enough", "a")
         with self.assertRaises(ValueError):
-            siphash('toooooooooooooooooooooooo long', 'a')
+            siphash("toooooooooooooooooooooooo long", "a")
         with self.assertRaises(ValueError):
-            siphash('', 'a')
+            siphash("", "a")
 
     def test_reference_vectors(self):
         """Test reference vectors."""
         vectors = [
-            0x726fdb47dd0e0e31, 0x74f839c593dc67fd, 0x0d6c8009d9a94f5a,
-            0x85676696d7fb7e2d, 0xcf2794e0277187b7, 0x18765564cd99a68d,
-            0xcbc9466e58fee3ce, 0xab0200f58b01d137, 0x93f5f5799a932462,
-            0x9e0082df0ba9e4b0, 0x7a5dbbc594ddb9f3, 0xf4b32f46226bada7,
-            0x751e8fbc860ee5fb, 0x14ea5627c0843d90, 0xf723ca908e7af2ee,
-            0xa129ca6149be45e5, 0x3f2acc7f57c29bdb, 0x699ae9f52cbe4794,
-            0x4bc1b3f0968dd39c, 0xbb6dc91da77961bd, 0xbed65cf21aa2ee98,
-            0xd0f2cbb02e3b67c7, 0x93536795e3a33e88, 0xa80c038ccd5ccec8,
-            0xb8ad50c6f649af94, 0xbce192de8a85b8ea, 0x17d835b85bbb15f3,
-            0x2f2e6163076bcfad, 0xde4daaaca71dc9a5, 0xa6a2506687956571,
-            0xad87a3535c49ef28, 0x32d892fad841c342, 0x7127512f72f27cce,
-            0xa7f32346f95978e3, 0x12e0b01abb051238, 0x15e034d40fa197ae,
-            0x314dffbe0815a3b4, 0x027990f029623981, 0xcadcd4e59ef40c4d,
-            0x9abfd8766a33735c, 0x0e3ea96b5304a7d0, 0xad0c42d6fc585992,
-            0x187306c89bc215a9, 0xd4a60abcf3792b95, 0xf935451de4f21df2,
-            0xa9538f0419755787, 0xdb9acddff56ca510, 0xd06c98cd5c0975eb,
-            0xe612a3cb9ecba951, 0xc766e62cfcadaf96, 0xee64435a9752fe72,
-            0xa192d576b245165a, 0x0a8787bf8ecb74b2, 0x81b3e73d20b49b6f,
-            0x7fa8220ba3b2ecea, 0x245731c13ca42499, 0xb78dbfaf3a8d83bd,
-            0xea1ad565322a1a0b, 0x60e61c23a3795013, 0x6606d7e446282b93,
-            0x6ca4ecb15c5f91e1, 0x9f626da15c9625f3, 0xe51b38608ef25f57,
-            0x958a324ceb064572
+            0x726FDB47DD0E0E31,
+            0x74F839C593DC67FD,
+            0x0D6C8009D9A94F5A,
+            0x85676696D7FB7E2D,
+            0xCF2794E0277187B7,
+            0x18765564CD99A68D,
+            0xCBC9466E58FEE3CE,
+            0xAB0200F58B01D137,
+            0x93F5F5799A932462,
+            0x9E0082DF0BA9E4B0,
+            0x7A5DBBC594DDB9F3,
+            0xF4B32F46226BADA7,
+            0x751E8FBC860EE5FB,
+            0x14EA5627C0843D90,
+            0xF723CA908E7AF2EE,
+            0xA129CA6149BE45E5,
+            0x3F2ACC7F57C29BDB,
+            0x699AE9F52CBE4794,
+            0x4BC1B3F0968DD39C,
+            0xBB6DC91DA77961BD,
+            0xBED65CF21AA2EE98,
+            0xD0F2CBB02E3B67C7,
+            0x93536795E3A33E88,
+            0xA80C038CCD5CCEC8,
+            0xB8AD50C6F649AF94,
+            0xBCE192DE8A85B8EA,
+            0x17D835B85BBB15F3,
+            0x2F2E6163076BCFAD,
+            0xDE4DAAACA71DC9A5,
+            0xA6A2506687956571,
+            0xAD87A3535C49EF28,
+            0x32D892FAD841C342,
+            0x7127512F72F27CCE,
+            0xA7F32346F95978E3,
+            0x12E0B01ABB051238,
+            0x15E034D40FA197AE,
+            0x314DFFBE0815A3B4,
+            0x027990F029623981,
+            0xCADCD4E59EF40C4D,
+            0x9ABFD8766A33735C,
+            0x0E3EA96B5304A7D0,
+            0xAD0C42D6FC585992,
+            0x187306C89BC215A9,
+            0xD4A60ABCF3792B95,
+            0xF935451DE4F21DF2,
+            0xA9538F0419755787,
+            0xDB9ACDDFF56CA510,
+            0xD06C98CD5C0975EB,
+            0xE612A3CB9ECBA951,
+            0xC766E62CFCADAF96,
+            0xEE64435A9752FE72,
+            0xA192D576B245165A,
+            0x0A8787BF8ECB74B2,
+            0x81B3E73D20B49B6F,
+            0x7FA8220BA3B2ECEA,
+            0x245731C13CA42499,
+            0xB78DBFAF3A8D83BD,
+            0xEA1AD565322A1A0B,
+            0x60E61C23A3795013,
+            0x6606D7E446282B93,
+            0x6CA4ECB15C5F91E1,
+            0x9F626DA15C9625F3,
+            0xE51B38608EF25F57,
+            0x958A324CEB064572,
         ]
-        k = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f'
-        message = ''
+        k = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f"
+        message = ""
         for i in range(64):
             self.assertEqual(siphash(k, message), vectors[i])
             message += chr(i)

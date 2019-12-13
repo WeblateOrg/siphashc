@@ -3,7 +3,8 @@
 
 import io
 import os.path
-from setuptools import setup, Extension
+
+from setuptools import Extension, setup
 
 with io.open(
     os.path.join(os.path.dirname(__file__), "README.rst"), encoding="utf-8"
