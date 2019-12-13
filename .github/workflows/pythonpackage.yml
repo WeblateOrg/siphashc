@@ -20,19 +20,12 @@ jobs:
     - name: Compile
       run: |
         CFLAGS="-Wall -Wextra -Wno-unused-parameter" python setup.py build
-    - name: Lint with flake8
-      run: |
-        flake8
     - name: Test
       run: |
-        python -W default -m coverage setup.py test
-        coverage xml
+        python -W default setup.py test
     - name: Benchmark
       run: |
         python benchmark.py
-    - uses: codecov/codecov-action@v1.0.4
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
     - name: Check sdist
       run: |
         python ./setup.py sdist
