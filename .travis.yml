@@ -20,6 +20,10 @@ matrix:
         - python3 -m pip install virtualenv
         - virtualenv .venv -p python3
         - source .venv/bin/activate
+      script:
+        - CFLAGS="-Wall -Wextra -Wno-unused-parameter -isysroot $(xcrun --show-sdk-path)" ARCHFLAGS="-isysroot $(xcrun --show-sdk-path)"  python setup.py build
+        - python -W default setup.py test
+        - python benchmark.py
     - os: windows
       language: sh
       python: "3"
