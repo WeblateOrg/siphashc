@@ -1,6 +1,5 @@
-dist: xenial
-sudo: false
 language: python
+dist: bionic
 python:
     - "2.7"
     - "3.4"
@@ -11,18 +10,19 @@ python:
 matrix:
   include:
     - os: osx
-      language: sh
-      python: "3.8"
+      language: generic
+      python: "3"
       # Perform the manual steps on osx to install python2 and activate venv
       before_install:
         - brew update
+        - brew unlink python@2
         - brew upgrade python3
         - python3 -m pip install virtualenv
         - virtualenv .venv -p python3
         - source .venv/bin/activate
     - os: windows
       language: sh
-      python: "3.8"
+      python: "3"
       before_install:
         - choco install python3
         - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
