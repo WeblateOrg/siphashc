@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-"""Simple timing benchmark.
+"""
+Simple timing benchmark.
 
-Used for testing possible regressions when changing code."""
-from __future__ import print_function
+Used for testing possible regressions when changing code.
+"""
 
 import timeit
 

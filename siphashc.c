@@ -107,4 +107,3 @@ static PyMethodDef siphashc_methods[] = {
     return module;
 #endif
 }
-

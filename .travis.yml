@@ -1,10 +1,10 @@
 language: python
 dist: bionic
 python:
-    - "3.5"
-    - "3.6"
-    - "3.7"
-    - "3.8"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
 matrix:
   include:
     - os: osx
@@ -30,6 +30,6 @@ matrix:
         - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
         - python -m pip install --upgrade pip wheel
 script:
-    - CFLAGS="-Wall -Wextra -Wno-unused-parameter" python setup.py build
-    - python -W default setup.py test
-    - python benchmark.py
+  - CFLAGS="-Wall -Wextra -Wno-unused-parameter" python setup.py build
+  - python -W default setup.py test
+  - python benchmark.py

@@ -41,8 +41,6 @@ repos:
       - id: check-merge-conflict
       - id: mixed-line-ending
         args: [--fix=lf]
-      - id: pretty-format-json
-        args: ["--autofix"]
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.24.2
     hooks:
@@ -55,31 +53,3 @@ repos:
     rev: 2.0.5
     hooks:
       - id: prettier
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.6.0
-    hooks:
-      - id: eslint
-        args: ["--format=compact"]
-        additional_dependencies:
-          - prettier@latest
-          - eslint@>=6.2.2
-          - eslint-plugin-import@>=2.18.0
-          - eslint-plugin-node@>=9.1.0
-          - eslint-plugin-promise@>=4.2.1
-          - eslint-plugin-standard@>=4.0.0
-          - eslint-config-prettier@latest
-          - eslint-plugin-prettier@latest
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
-    hooks:
-      - id: flake8
-  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
-    rev: 0.0.2
-    hooks:
-      - id: stylelint
-        args: ["--formatter=compact"]
-        additional_dependencies:
-          - stylelint@latest
-          - stylelint-config-prettier@latest
-          - stylelint-prettier@latest
-          - prettier@latest
