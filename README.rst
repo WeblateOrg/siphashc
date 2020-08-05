@@ -38,18 +38,6 @@ It was merged from two versions of the module:
 Usage
 ~~~~~
 
-Python 2
-^^^^^^^^
-
-.. code:: python
-
-    >>> from siphashc import siphash
-    >>> siphash('sixteencharstrng', 'i need a hash of this')
-    10796923698683394048L
-
-Python 3
-^^^^^^^^
-
 .. code:: python
 
     >>> from siphashc import siphash
