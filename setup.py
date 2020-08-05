@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """Setup for the siphashc module."""
 
 import io
@@ -28,6 +27,7 @@ setup(
         "Twitter": "https://twitter.com/WeblateOrg",
     },
     license="ISC",
+    python_requires=">=3.5",
     ext_modules=[
         Extension(
             name="siphashc", sources=["siphashc.c", "siphash/siphash.c"], language="c"
@@ -38,9 +38,7 @@ setup(
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
