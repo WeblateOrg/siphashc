@@ -8,3 +8,10 @@ updates:
     labels:
       - dependencies
       - automerge
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: daily
+    labels:
+      - dependencies
+      - automerge

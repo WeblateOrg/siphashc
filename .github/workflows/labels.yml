@@ -1,0 +1,43 @@
+# This file is maintained in https://github.com/WeblateOrg/meta/
+name: Issue labeled
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  issueLabeled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add backlog comment
+        uses: peter-evans/create-or-update-comment@v1
+        if: github.event.label.name == 'backlog'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            This issue has been added to the backlog. It is not scheduled on our roadmap, but it eventually might be implemented. In case you desperately need this feature, please consider helping or [funding the development](https://weblate.org/support/).
+      - name: Add undecided comment
+        uses: peter-evans/create-or-update-comment@v1
+        if: github.event.label.name == 'undecided'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            This issue has been put aside. Currently, it is unclear whether it will ever be implemented as it seems to cover too narrow of a use case or doesn't seem to fit into Weblate. Please try to clarify the use case or consider proposing something more generic to make it useful to more users.
+      - name: Add question comment
+        uses: peter-evans/create-or-update-comment@v1
+        if: github.event.label.name == 'question'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            This issue looks like a support question. We try to answer these reasonably fast, but in case you are looking for faster resolution, please consider [purchasing support subscription](https://weblate.org/support/) and make Weblate stronger.
+      - name: Add translate-toolkit comment
+        uses: peter-evans/create-or-update-comment@v1
+        if: github.event.label.name == 'translate-toolkit'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            The issue you've reported needs to be addressed in the [translate-toolkit](https://github.com/translate/translate/). Please file the issue there and do not forget to include links to any relevant specifications about the formats (if applicable).
