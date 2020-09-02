@@ -12,11 +12,10 @@ jobs:
           python-versions: "cp35-cp35m cp36-cp36m cp37-cp37m cp38-cp38"
       - name: Publish package
         if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@v1.3.1
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_password }}
-          skip_existing: true
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.pypi_password }}
+        run: twine upload --skip-existing dist/*-manylinux*.whl
 
   native:
     runs-on: ubuntu-latest
