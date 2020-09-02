@@ -3,7 +3,7 @@ name: Distribution
 on: [push, pull_request]
 
 jobs:
-  manywheel:
+  manylinux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.pypi_password }}
         run: |
-          # Linux wheels are not supported on PyPI, use manylinux built in separate workflow
+          # Linux wheels are not supported on PyPI, use manylinux built in separate job
           rm dist/*linux*.whl
           # Upload all remaining tar.gz and wheels, skip existing files
           twine upload --skip-existing $(find dist -name '*.tar.gz' -o -name '*.whl')
