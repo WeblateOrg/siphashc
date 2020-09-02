@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2013 Eli Janssen
  * Copyright (c) 2014 Carlo Pires
- * Copyright (c) 2017 - 2019 Michal Čihař
+ * Copyright (c) 2017 - 2020 Michal Čihař
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -69,41 +69,20 @@ static PyMethodDef siphashc_methods[] = {
     {NULL, NULL, 0, NULL} /* sentinel */
 };
 
-#if PY_MAJOR_VERSION >= 3
-	static struct PyModuleDef moduledef = {
-		    PyModuleDef_HEAD_INIT,
-		    "siphashc",
-		    NULL,
-            -1,
-		    siphashc_methods,
-		    NULL,
-		    NULL,
-		    NULL,
-		    NULL
-	};
+static struct PyModuleDef moduledef = {
+    PyModuleDef_HEAD_INIT,
+    "siphashc",
+    NULL,
+    -1,
+    siphashc_methods,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+};
 
-	#define INITERROR return NULL
-
-	PyObject *
-	PyInit_siphashc(void)
-#else
-	#define INITERROR return
-
-	void
-	initsiphashc(void)
-#endif
+PyObject *
+PyInit_siphashc(void)
 {
-    PyObject *module;
-#if PY_MAJOR_VERSION >= 3
-    module = PyModule_Create(&moduledef);
-#else
-    module = Py_InitModule("siphashc", siphashc_methods);
-#endif
-
-    if (module == NULL)
-        INITERROR;
-
-#if PY_MAJOR_VERSION >= 3
-    return module;
-#endif
+    return PyModule_Create(&moduledef);
 }
