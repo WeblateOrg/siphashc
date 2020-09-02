@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.1
+---
+
+* Fixed publishing wheels in pypi.org.
+
 2.0
 ---
 
