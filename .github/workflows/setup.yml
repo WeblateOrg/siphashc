@@ -47,7 +47,7 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.pypi_password }}
-        run: twine upload dist/*.tar.gz
+        run: twine upload --skip-existing dist/*.tar.gz
 
   otheros:
     runs-on: ${{ matrix.os }}
