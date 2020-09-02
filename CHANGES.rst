@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.0
+---
+
+* Dropped support for Python 2.
+
 1.3
 ---
 

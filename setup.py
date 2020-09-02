@@ -13,7 +13,7 @@ with io.open(
 
 setup(
     name="siphashc",
-    version="1.3",
+    version="2.0",
     author="Michal Čihař",
     author_email="michal@cihar.com",
     description="Python module (in c) for siphash-2-4",
