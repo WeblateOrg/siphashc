@@ -56,13 +56,15 @@ jobs:
         run: python ./setup.py sdist bdist_wheel
       - name: twine
         run: twine check dist/*
-      - name: Publish package
-        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+      - name: Publish wheel
+        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os != 'ubuntu-latest'
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.pypi_password }}
-        run: |
-          # Linux wheels are not supported on PyPI, use manylinux built in separate job
-          rm dist/*linux*.whl
-          # Upload all remaining tar.gz and wheels, skip existing files
-          twine upload --skip-existing $(find dist -name '*.tar.gz' -o -name '*.whl')
+        run: twine upload --skip-existing dist/*.whl
+      - name: Publish source
+        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os == 'ubuntu-latest'
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.pypi_password }}
+        run: twine upload --skip-existing dist/*.tar.gz
