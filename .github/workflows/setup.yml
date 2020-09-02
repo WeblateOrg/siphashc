@@ -1,0 +1,36 @@
+name: Distribution
+
+on: [push, pull_request]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2.1.1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-setup-${{ hashFiles('**/requirements*.txt') }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2.1.2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip wheel
+          pip install -r requirements-test.txt
+      - name: build
+        run: python ./setup.py sdist bdist_wheel
+      - name: twine
+        run: twine check dist/*
+      - name: Publish package
+        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@v1.3.1
+        with:
+          user: __token__
+          password: ${{ secrets.pypi_password }}
+          skip_existing: true

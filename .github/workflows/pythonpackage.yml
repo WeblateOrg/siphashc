@@ -28,8 +28,3 @@ jobs:
       - name: Benchmark
         run: |
           python benchmark.py
-      - name: Check sdist
-        run: |
-          python ./setup.py sdist
-          pip install twine
-          twine check dist/*
