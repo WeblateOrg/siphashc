@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.2
+---
+
+* Tested with Python 3.9.
+
 2.1
 ---
 
