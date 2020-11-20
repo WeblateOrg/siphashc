@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 """Setup for the siphashc module."""
 
-import io
 import os.path
 
 from setuptools import Extension, setup
 
-with io.open(
+with open(
     os.path.join(os.path.dirname(__file__), "README.rst"), encoding="utf-8"
 ) as readme:
     LONG_DESCRIPTION = readme.read()
