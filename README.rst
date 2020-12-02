@@ -38,7 +38,7 @@ It was merged from two versions of the module:
 Usage
 ~~~~~
 
-.. code:: python
+.. code:: python-console
 
     >>> from siphashc import siphash
     >>> siphash('sixteencharstrng', 'i need a hash of this')
