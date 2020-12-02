@@ -21,7 +21,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Compile
         env:
-          CFLAGS: "-Wall -Wextra -Wno-unused-parameter"
+          CFLAGS: "-Wall -Wextra -Wno-unused-parameter -Werror"
         run: python setup.py build
       - name: Install
         run: pip install .
