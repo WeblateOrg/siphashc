@@ -22,7 +22,7 @@ jobs:
             ~/.cache/pre-commit
           key: ${{ runner.os }}-pip-test-${{ hashFiles('**/requirements*.txt') }}
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2.2.0
+        uses: actions/setup-python@v2.2.1
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -r requirements-test.txt
