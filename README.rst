@@ -41,7 +41,7 @@ Usage
 .. code:: pycon
 
     >>> from siphashc import siphash
-    >>> siphash('sixteencharstrng', 'i need a hash of this')
+    >>> siphash("sixteencharstrng", "i need a hash of this")
     10796923698683394048
 
 License
