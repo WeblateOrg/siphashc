@@ -27,8 +27,12 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2.2.1
+        with:
+          python-version: 3.8
+
+      - run: python setup.py build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
