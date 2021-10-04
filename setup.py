@@ -24,6 +24,7 @@ setup(
         "Issue Tracker": "https://github.com/WeblateOrg/siphashc/issues",
         "Source Code": "https://github.com/WeblateOrg/siphashc",
         "Twitter": "https://twitter.com/WeblateOrg",
+        "Funding": "https://weblate.org/donate/",
     },
     license="ISC",
     python_requires=">=3.6",
