@@ -2,7 +2,7 @@ Copyright (c) 2013 Eli Janssen
 
 Copyright (c) 2014 Carlo Pires (python3 support)
 
-Copyright (c) 2017 - 2019 Michal Čihař (additional cleanups)
+Copyright © 2017–2022 Michal Čihař (additional cleanups)
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
