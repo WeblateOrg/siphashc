@@ -3,7 +3,7 @@ name: Python package
 on:
   push:
     branches-ignore:
-      - "dependabot/**"
+    - dependabot/**
   pull_request:
 
 jobs:
@@ -14,25 +14,25 @@ jobs:
         python-version: [3.6, 3.7, 3.8, 3.9]
 
     steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: actions/cache@v2.1.7
-        with:
-          path: |
-            ~/.cache/pip
-            ~/.cache/pre-commit
-          key: ${{ runner.os }}-pip-test-${{ hashFiles('**/requirements*.txt') }}
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2.3.1
-        with:
-          python-version: ${{ matrix.python-version }}
-      - run: pip install -r requirements-test.txt
-      - name: Compile
-        env:
-          CFLAGS: "-Wall -Wextra -Wno-unused-parameter -Werror"
-        run: python setup.py build
-      - name: Install
-        run: pip install .
-      - name: Test
-        run: pytest test_siphashc.py README.rst
-      - name: Benchmark
-        run: python benchmark.py
+    - uses: actions/checkout@v2.4.0
+    - uses: actions/cache@v2.1.7
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.cache/pre-commit
+        key: ${{ runner.os }}-pip-test-${{ hashFiles('**/requirements*.txt') }}
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2.3.1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - run: pip install -r requirements-test.txt
+    - name: Compile
+      env:
+        CFLAGS: -Wall -Wextra -Wno-unused-parameter -Werror
+      run: python setup.py build
+    - name: Install
+      run: pip install .
+    - name: Test
+      run: pytest test_siphashc.py README.rst
+    - name: Benchmark
+      run: python benchmark.py
