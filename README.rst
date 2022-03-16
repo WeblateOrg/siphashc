@@ -50,3 +50,8 @@ License
 Released under the `ISC
 license <https://choosealicense.com/licenses/isc/>`__. See
 ``LICENSE.md`` file for details.
+
+Contributing
+~~~~~~~~~~~~
+
+Contributions are welcome! See `documentation <https://docs.weblate.org/en/latest/contributing/modules.html>`__ for more information.
