@@ -9,9 +9,12 @@ repos:
   - id: check-yaml
   - id: requirements-txt-fixer
   - id: check-merge-conflict
+  - id: check-json
   - id: debug-statements
   - id: mixed-line-ending
     args: [--fix=lf]
+  - id: pretty-format-json
+    args: [--no-sort-keys, --autofix, --no-ensure-ascii]
 - repo: https://github.com/pycqa/isort
   rev: 5.10.1
   hooks:
@@ -66,6 +69,8 @@ repos:
   hooks:
   - id: mdformat
     additional_dependencies:
-    - mdformat-gfm
-    - mdformat-black
-    - mdformat-shfmt
+    - mdformat-gfm==0.3.5
+    - mdformat-black==0.1.1
+    - mdformat-shfmt==0.1.0
+ci:
+  autoupdate_schedule: quarterly
