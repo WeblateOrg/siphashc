@@ -3,7 +3,6 @@
     "dependencies"
   ],
   "rangeStrategy": "widen",
-  "includeForks": true,
   "dependencyDashboard": true,
   "automerge": true,
   "automergeType": "pr",
