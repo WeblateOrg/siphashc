@@ -16,7 +16,7 @@ repos:
     args: [--fix=lf]
   - id: pretty-format-json
     args: [--no-sort-keys, --autofix, --no-ensure-ascii]
-- repo: https://github.com/pycqa/isort
+- repo: https://github.com/PyCQA/isort
   rev: 5.12.0
   hooks:
   - id: isort
