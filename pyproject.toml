@@ -7,6 +7,9 @@ profile = "black"
 [tool.ruff]
 format = "github"
 ignore = [
+  "D203",  # CONFIG: incompatible with D211
+  "D212",  # CONFIG: incompatible with D213
+  "T201"  # WONTFIX: using print() (maybe add noqa)
 ]
 select = [
   "E",
