@@ -27,7 +27,7 @@ setup(
         "Funding": "https://weblate.org/donate/",
     },
     license="ISC",
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     ext_modules=[
         Extension(
             name="siphashc", sources=["siphashc.c", "siphash/siphash.c"], language="c"
@@ -39,10 +39,10 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: ISC License (ISCL)",
     ],
