@@ -21,7 +21,7 @@ jobs:
         pip install twine
     - uses: RalfG/python-wheels-manylinux-build@v0.7.1
       with:
-        python-versions: cp38-cp38 cp39-cp39 cp310-cp310 cp311-cp311
+        python-versions: cp38-cp38 cp39-cp39 cp310-cp310 cp311-cp311 cp312-cp312
     - name: twine
       run: twine check dist/*
     - name: Publish package
@@ -41,6 +41,7 @@ jobs:
         - '3.9'
         - '3.10'
         - '3.11'
+        - '3.12'
     steps:
     - uses: actions/checkout@v4
     - uses: actions/cache@v3
@@ -60,13 +61,13 @@ jobs:
     - name: twine
       run: twine check dist/*
     - name: Publish wheel
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os != 'ubuntu-20.04'
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os != 'ubuntu-latest'
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.pypi_password }}
       run: twine upload --skip-existing dist/*.whl
     - name: Publish source
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os == 'ubuntu-20.04'
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os == 'ubuntu-latest'
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.pypi_password }}
