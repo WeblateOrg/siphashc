@@ -58,6 +58,8 @@ jobs:
 
   sdist:
     runs-on: ubuntu-22.04
+    needs:
+    - build_wheels
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
