@@ -34,9 +34,9 @@ jobs:
     - name: Compile
       env:
         CFLAGS: -Wall -Wextra -Wno-unused-parameter -Werror
-      run: python setup.py build
+      run: python -m build
     - name: Install
-      run: pip install .
+      run: pip install dist/*.whl
     - name: Test
       run: pytest test_siphashc.py README.rst
     - name: Benchmark
