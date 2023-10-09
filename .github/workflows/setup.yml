@@ -5,10 +5,6 @@ on: [push, pull_request]
 jobs:
   build_wheels:
     name: Build wheel for ${{ matrix.config.platform }}
-    permissions:
-      # this permission is mandatory for trusted publishing
-      id-token: write
-
     runs-on: ${{ matrix.config.os }}
     strategy:
       matrix:
@@ -33,6 +29,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - run: pip install twine
+
     - name: Set up QEMU
       if: runner.os == 'Linux'
       uses: docker/setup-qemu-action@v3
@@ -48,17 +46,13 @@ jobs:
         CIBW_TEST_EXTRAS: test
         CIBW_TEST_COMMAND: pytest {project}/test_siphashc.py {project}/README.rst
 
-    - name: Publish package distributions to PyPI
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-      uses: pypa/gh-action-pypi-publish@release/v1
+    - run: twine check ./wheelhouse/*.whl
+
+    - uses: actions/upload-artifact@v3
       with:
-        packages-dir: wheelhouse
+        path: ./wheelhouse/*.whl
 
   sdist:
-    runs-on: ubuntu-22.04
-    permissions:
-      # this permission is mandatory for trusted publishing
-      id-token: write
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -71,6 +65,26 @@ jobs:
       run: pip install -r requirements-test.txt
     - name: build
       run: python -m build --sdist
+    - uses: actions/upload-artifact@v3
+      with:
+        path: dist/*.tar.gz
+
+  publish:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
+    needs:
+    - sdist
+    - build_wheels
+    runs-on: ubuntu-22.04
+    permissions:
+      # this permission is mandatory for trusted publishing
+      id-token: write
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        # unpacks default artifact into dist/
+        # if `name: artifact` is omitted, the action will create extra parent dir
+        name: artifact
+        path: dist
+
     - name: Publish package distributions to PyPI
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@release/v1
