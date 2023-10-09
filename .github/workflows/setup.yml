@@ -45,6 +45,7 @@ jobs:
         CIBW_ARCHS: ${{ matrix.config.arch }}
         CIBW_BUILD: ${{ matrix.config.build }}-${{ matrix.config.platform }}
         CIBW_SKIP: cp36* cp37*
+        CIBW_TEST_COMMAND: pytest test_siphashc.py README.rst
 
     - name: twine
       run: twine check wheelhouse/*
