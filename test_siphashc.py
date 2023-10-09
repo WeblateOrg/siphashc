@@ -1,6 +1,7 @@
 """Test for siphashc module."""
 import unittest
 
+import pytest
 from siphashc import siphash
 
 
@@ -10,18 +11,18 @@ class TestSiphashC(unittest.TestCase):
     def test_hash(self):
         """Test simple hashing."""
         result = siphash("sixteencharstrng", "i need a hash of this")
-        self.assertEqual(10796923698683394048, result)
+        assert result == 10796923698683394048
 
         result = siphash("0123456789ABCDEF", "a")
-        self.assertEqual(12398370950267227270, result)
+        assert result == 12398370950267227270
 
     def test_errors(self):
         """Test error handling."""
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             siphash("not long enough", "a")
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             siphash("toooooooooooooooooooooooo long", "a")
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             siphash("", "a")
 
     def test_reference_vectors(self):
@@ -95,5 +96,5 @@ class TestSiphashC(unittest.TestCase):
         k = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f"
         message = ""
         for i in range(64):
-            self.assertEqual(siphash(k, message), vectors[i])
+            assert siphash(k, message) == vectors[i]
             message += chr(i)
