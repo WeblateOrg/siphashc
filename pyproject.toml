@@ -25,6 +25,9 @@ name = "Michal Čihař"
 [project.license]
 text = "ISC"
 
+[project.optional-dependencies]
+test = ["pytest"]
+
 [project.readme]
 content-type = "text/x-rst"
 file = "README.rst"

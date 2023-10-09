@@ -45,7 +45,7 @@ jobs:
         CIBW_ARCHS: ${{ matrix.config.arch }}
         CIBW_BUILD: cp*-${{ matrix.config.platform }}
         CIBW_SKIP: cp36* cp37*
-        CIBW_BEFORE_TEST: pip install pytest
+        CIBW_TEST_EXTRAS: test
         CIBW_TEST_COMMAND: pytest {project}/test_siphashc.py {project}/README.rst
 
     - name: Publish package distributions to PyPI
