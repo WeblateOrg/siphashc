@@ -27,7 +27,7 @@ jobs:
           platform: macosx_arm64
         - os: windows-2019
           arch: x64_64
-          platform: windows_x86_64
+          platform: windows_amd64
 
     steps:
     - name: Checkout
