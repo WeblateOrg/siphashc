@@ -4,6 +4,8 @@ Changes
 2.3
 ---
 
+* Fixed publishing wheels for non-Linux platforms.
+
 2.2
 ---
 
