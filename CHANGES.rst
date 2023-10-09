@@ -4,8 +4,9 @@ Changes
 2.2
 ---
 
-* Tested with Python 3.9, no changes needed.
-* Dropped support for Python 3.5.
+* Tested with Python 3.9, 3.10, 3.11, and 3.12, no changes needed.
+* Dropped support for Python 3.5, 3.6, and 3.7.
+* Binary wheels are now available for all supported Python versions.
 
 2.1
 ---
