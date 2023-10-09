@@ -48,9 +48,6 @@ jobs:
         CIBW_BEFORE_TEST: pip install pytest
         CIBW_TEST_COMMAND: pytest {project}/test_siphashc.py {project}/README.rst
 
-    - name: twine
-      run: twine check wheelhouse/*
-
     - name: Publish package distributions to PyPI
       if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@release/v1
