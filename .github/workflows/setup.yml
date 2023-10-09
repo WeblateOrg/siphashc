@@ -7,14 +7,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-setup-${{ hashFiles('**/requirements*.txt') }}
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
+        cache: pip
+        cache-dependency-path: requirements*.txt
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip wheel
@@ -44,14 +42,12 @@ jobs:
         - '3.12'
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-setup-${{ hashFiles('**/requirements*.txt') }}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+        cache: pip
+        cache-dependency-path: requirements*.txt
     - name: Install dependencies
       run: pip install -r requirements-test.txt
     - name: build
