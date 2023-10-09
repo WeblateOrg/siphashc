@@ -70,11 +70,32 @@ jobs:
       with:
         path: dist/*.tar.gz
 
-  publish:
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
+  check:
     needs:
     - sdist
     - build_wheels
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+        cache: pip
+        cache-dependency-path: requirements*.txt
+    - name: Install dependencies
+      run: pip install -r requirements-test.txt
+    - uses: actions/download-artifact@v3
+      with:
+        # unpacks default artifact into dist/
+        # if `name: artifact` is omitted, the action will create extra parent dir
+        name: artifact
+        path: dist
+    - run: twine check dist/*.whl
+
+  publish:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
+    needs:
+    - check
     runs-on: ubuntu-22.04
     permissions:
       # this permission is mandatory for trusted publishing
