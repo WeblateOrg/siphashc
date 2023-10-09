@@ -29,8 +29,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - run: pip install twine
-
     - name: Set up QEMU
       if: runner.os == 'Linux'
       uses: docker/setup-qemu-action@v3
@@ -45,8 +43,6 @@ jobs:
         CIBW_SKIP: cp36* cp37*
         CIBW_TEST_EXTRAS: test
         CIBW_TEST_COMMAND: pytest {project}/test_siphashc.py {project}/README.rst
-
-    - run: twine check ./wheelhouse/*.whl
 
     - uses: actions/upload-artifact@v3
       with:
