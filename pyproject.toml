@@ -36,54 +36,21 @@ Homepage = "https://github.com/WeblateOrg/siphashc"
 "Source Code" = "https://github.com/WeblateOrg/siphashc"
 Twitter = "https://twitter.com/WeblateOrg"
 
-[tool.black]
-target-version = ['py38']
-
 [tool.isort]
 profile = "black"
 
 [tool.ruff]
 ignore = [
+  "ANN",  # TODO: missing type annotations
+  "PLR2004",  # TODO: Magic value used in comparison
+  "PT011",  # TODO: `pytest.raises(ValueError)` is too broad
+  "S101",  # CONFIG: using pytest
   "D203",  # CONFIG: incompatible with D211
   "D212",  # CONFIG: incompatible with D213
   "T201"  # WONTFIX: using print() (maybe add noqa)
 ]
 output-format = "github"
-select = [
-  "E",
-  "F",
-  "B",
-  "T10",
-  "A",
-  "C4",
-  "C90",
-  "YTT",
-  "DJ",
-  "UP",
-  "D",
-  "PD",
-  "PGH",
-  "PL",
-  "TRY",
-  "RUF",
-  "ERA",
-  "ICN",
-  "ISC",
-  "EXE",
-  "INP",
-  "PIE",
-  "G",
-  "PYI",
-  "Q",
-  "SIM",
-  "TID",
-  "RSE",
-  "T20",
-  "RET",
-  "SLF",
-  "N"
-]
-target-version = "py38"
+select = ["ALL"]
 
 [tool.ruff.mccabe]
 max-complexity = 16
