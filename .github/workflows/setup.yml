@@ -56,6 +56,9 @@ jobs:
 
   sdist:
     runs-on: ubuntu-22.04
+    permissions:
+      # this permission is mandatory for trusted publishing
+      id-token: write
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
