@@ -3,66 +3,69 @@ name: Distribution
 on: [push, pull_request]
 
 jobs:
-  manylinux:
+  build_wheels:
+    name: Build wheel for ${{ matrix.config.platform }}
+    permissions:
+      # this permission is mandatory for trusted publishing
+      id-token: write
+
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      matrix:
+        config:
+        - os: ubuntu-22.04
+          arch: x86_64
+          platform: manylinux_x86_64
+        - os: ubuntu-22.04
+          arch: aarch64
+          platform: manylinux_aarch64
+        - os: macos-12
+          arch: x86_64
+          platform: macosx_x86_64
+        - os: macos-12
+          arch: arm64
+          platform: macosx_arm64
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up QEMU
+      if: runner.os == 'Linux'
+      uses: docker/setup-qemu-action@v3
+      with:
+        platforms: all
+
+    - name: Build wheel
+      uses: pypa/cibuildwheel@v2.16.2
+      env:
+        CIBW_ARCHS: ${{ matrix.config.arch }}
+        CIBW_BUILD: ${{ matrix.config.build }}-${{ matrix.config.platform }}
+        CIBW_SKIP: cp36* cp37*
+
+    - name: twine
+      run: twine check wheelhouse/*
+
+    - name: Publish package distributions to PyPI
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        packages-dir: wheelhouse
+
+  sdist:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12'
-        cache: pip
-        cache-dependency-path: requirements*.txt
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip wheel
-        pip install twine
-    - uses: RalfG/python-wheels-manylinux-build@v0.7.1
-      with:
-        python-versions: cp38-cp38 cp39-cp39 cp310-cp310 cp311-cp311 cp312-cp312
-    - name: twine
-      run: twine check dist/*
-    - name: Publish package
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.pypi_password }}
-      run: twine upload --skip-existing dist/*-manylinux*.whl
-
-  native:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-        python-version:
-        - '3.8'
-        - '3.9'
-        - '3.10'
-        - '3.11'
-        - '3.12'
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.12
         cache: pip
         cache-dependency-path: requirements*.txt
     - name: Install dependencies
       run: pip install -r requirements-test.txt
     - name: build
-      run: python -m build
-    - name: twine
-      run: twine check dist/*
-    - name: Publish wheel
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os != 'ubuntu-latest'
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.pypi_password }}
-      run: twine upload --skip-existing dist/*.whl
-    - name: Publish source
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.os == 'ubuntu-latest'
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.pypi_password }}
-      run: twine upload --skip-existing dist/*.tar.gz
+      run: python -m build --sdist
+    - name: Publish package distributions to PyPI
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@release/v1
