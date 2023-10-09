@@ -43,7 +43,7 @@ jobs:
       uses: pypa/cibuildwheel@v2.16.2
       env:
         CIBW_ARCHS: ${{ matrix.config.arch }}
-        CIBW_BUILD: ${{ matrix.config.build }}-${{ matrix.config.platform }}
+        CIBW_BUILD: cp*-${{ matrix.config.platform }}
         CIBW_SKIP: cp36* cp37*
         CIBW_TEST_COMMAND: pytest test_siphashc.py README.rst
 
