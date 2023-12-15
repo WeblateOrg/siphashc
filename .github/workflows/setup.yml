@@ -45,6 +45,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         path: ./wheelhouse/*.whl
+        name: wheel-${{ matrix.config.platform }}
 
   sdist:
     runs-on: ubuntu-22.04
@@ -63,6 +64,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         path: dist/*.tar.gz
+        name: sdist
 
   check:
     needs:
@@ -81,10 +83,8 @@ jobs:
       run: pip install -r requirements-test.txt
     - uses: actions/download-artifact@v4
       with:
-        # unpacks default artifact into dist/
-        # if `name: artifact` is omitted, the action will create extra parent dir
-        name: artifact
         path: dist
+    - run: mv dist/*/* dist/
     - run: twine check dist/*.whl
 
   publish:
@@ -98,10 +98,8 @@ jobs:
     steps:
     - uses: actions/download-artifact@v4
       with:
-        # unpacks default artifact into dist/
-        # if `name: artifact` is omitted, the action will create extra parent dir
-        name: artifact
         path: dist
+    - run: mv dist/*/* dist/
 
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
