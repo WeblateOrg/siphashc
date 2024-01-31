@@ -13,10 +13,10 @@ class TestSiphashC(unittest.TestCase):
     def test_hash(self: TestSiphashC) -> None:
         """Test simple hashing."""
         result = siphash("sixteencharstrng", "i need a hash of this")
-        assert result == 10796923698683394048
+        assert result == 10796923698683394048  # noqa: PLR2004
 
         result = siphash("0123456789ABCDEF", "a")
-        assert result == 12398370950267227270
+        assert result == 12398370950267227270  # noqa: PLR2004
 
     def test_errors(self: TestSiphashC) -> None:
         """Test error handling."""

@@ -48,7 +48,6 @@ profile = "black"
 
 [tool.ruff]
 ignore = [
-  "PLR2004",  # TODO: Magic value used in comparison
   "PT011",  # TODO: `pytest.raises(ValueError)` is too broad
   "S101",  # CONFIG: using pytest
   "D203",  # CONFIG: incompatible with D211
