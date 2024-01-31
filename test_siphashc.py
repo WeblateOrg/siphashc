@@ -1,4 +1,6 @@
 """Test for siphashc module."""
+from __future__ import annotations
+
 import unittest
 
 import pytest
@@ -8,7 +10,7 @@ from siphashc import siphash
 class TestSiphashC(unittest.TestCase):
     """Test for siphashc module."""
 
-    def test_hash(self):
+    def test_hash(self: TestSiphashC) -> None:
         """Test simple hashing."""
         result = siphash("sixteencharstrng", "i need a hash of this")
         assert result == 10796923698683394048
@@ -16,7 +18,7 @@ class TestSiphashC(unittest.TestCase):
         result = siphash("0123456789ABCDEF", "a")
         assert result == 12398370950267227270
 
-    def test_errors(self):
+    def test_errors(self: TestSiphashC) -> None:
         """Test error handling."""
         with pytest.raises(ValueError):
             siphash("not long enough", "a")
@@ -25,7 +27,7 @@ class TestSiphashC(unittest.TestCase):
         with pytest.raises(ValueError):
             siphash("", "a")
 
-    def test_reference_vectors(self):
+    def test_reference_vectors(self: TestSiphashC) -> None:
         """Test reference vectors."""
         vectors = [
             0x726FDB47DD0E0E31,
