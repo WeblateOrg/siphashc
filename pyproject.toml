@@ -16,7 +16,7 @@ description = "Python module (in c) for siphash-2-4"
 keywords = ["siphash", "siphash-2-4"]
 name = "siphashc"
 requires-python = ">=3.8"
-version = "2.4"
+version = "2.4.1"
 
 [[project.authors]]
 email = "michal@cihar.com"
