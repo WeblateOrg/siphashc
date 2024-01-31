@@ -20,11 +20,20 @@ class TestSiphashC(unittest.TestCase):
 
     def test_errors(self: TestSiphashC) -> None:
         """Test error handling."""
-        with pytest.raises(ValueError):
+        with pytest.raises(
+            ValueError,
+            match=r"key must be exactly 128 bits long \(16 chars\)",
+        ):
             siphash("not long enough", "a")
-        with pytest.raises(ValueError):
+        with pytest.raises(
+            ValueError,
+            match=r"key must be exactly 128 bits long \(16 chars\)",
+        ):
             siphash("toooooooooooooooooooooooo long", "a")
-        with pytest.raises(ValueError):
+        with pytest.raises(
+            ValueError,
+            match=r"key must be exactly 128 bits long \(16 chars\)",
+        ):
             siphash("", "a")
 
     def test_reference_vectors(self: TestSiphashC) -> None:
