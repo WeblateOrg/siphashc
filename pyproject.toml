@@ -62,6 +62,9 @@ max-complexity = 16
 "benchmark.py" = ["T201"]
 
 [tool.setuptools]
-include-package-data = false
-py-modules = []
+include-package-data = true
 zip-safe = true
+
+[tool.setuptools.packages.find]
+include = ["siphashc*"]
+namespaces = true
