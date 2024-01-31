@@ -4,6 +4,7 @@ from __future__ import annotations
 import unittest
 
 import pytest
+
 from siphashc import siphash
 
 

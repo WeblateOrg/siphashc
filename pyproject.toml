@@ -55,6 +55,10 @@ ignore = [
 output-format = "github"
 select = ["ALL"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["siphashc"]
+known-third-party = ["pytest"]
+
 [tool.ruff.mccabe]
 max-complexity = 16
 
