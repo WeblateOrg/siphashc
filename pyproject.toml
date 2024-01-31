@@ -50,14 +50,16 @@ profile = "black"
 ignore = [
   "S101",  # CONFIG: using pytest
   "D203",  # CONFIG: incompatible with D211
-  "D212",  # CONFIG: incompatible with D213
-  "T201"  # WONTFIX: using print() (maybe add noqa)
+  "D212"  # CONFIG: incompatible with D213
 ]
 output-format = "github"
 select = ["ALL"]
 
 [tool.ruff.mccabe]
 max-complexity = 16
+
+[tool.ruff.per-file-ignores]
+"benchmark.py" = ["T201"]
 
 [tool.setuptools]
 include-package-data = false
