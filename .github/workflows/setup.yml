@@ -84,7 +84,7 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         path: dist
-    - run: mv dist/*/* dist/
+        merge-multiple: true
     - run: twine check dist/*.whl
 
   publish:
@@ -99,7 +99,7 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         path: dist
-    - run: mv dist/*/* dist/
+        merge-multiple: true
 
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
