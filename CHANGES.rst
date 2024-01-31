@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.4
+---
+
+* Added type annotations.
+
 2.3
 ---
 
