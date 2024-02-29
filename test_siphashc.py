@@ -1,4 +1,5 @@
 """Test for siphashc module."""
+
 from __future__ import annotations
 
 import unittest

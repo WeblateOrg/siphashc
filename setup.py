@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """Setup for the siphashc module."""
 
-
 from setuptools import Extension, setup
 
 setup(
