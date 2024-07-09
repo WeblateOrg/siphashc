@@ -36,7 +36,7 @@ jobs:
         platforms: all
 
     - name: Build wheel
-      uses: pypa/cibuildwheel@v2.19.1
+      uses: pypa/cibuildwheel@v2.19.2
       env:
         CIBW_ARCHS: ${{ matrix.config.arch }}
         CIBW_BUILD: cp*-${{ matrix.config.platform }}
