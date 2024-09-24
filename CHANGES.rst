@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.5
+---
+
+* Python 3.13 compatiblity.
+
 2.4
 ---
 
