@@ -9,19 +9,19 @@ jobs:
     strategy:
       matrix:
         config:
-        - os: ubuntu-22.04
+        - os: ubuntu-24.04
           arch: x86_64
           platform: manylinux_x86_64
-        - os: ubuntu-22.04
+        - os: ubuntu-24.04
           arch: aarch64
           platform: manylinux_aarch64
-        - os: macos-12
+        - os: macos-14
           arch: x86_64
           platform: macosx_x86_64
-        - os: macos-12
+        - os: macos-14-arm64
           arch: arm64
           platform: macosx_arm64
-        - os: windows-2019
+        - os: windows-2022
           arch: AMD64
           platform: win_amd64
 
