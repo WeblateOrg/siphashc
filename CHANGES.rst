@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.6
+---
+
+* Dropped support for Python 3.8.
+
 2.5
 ---
 
