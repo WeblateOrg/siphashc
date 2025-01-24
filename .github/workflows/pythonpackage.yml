@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     strategy:
       matrix:
         python-version:
@@ -24,16 +24,14 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-        cache: pip
-        cache-dependency-path: requirements*.txt
-        allow-prereleases: true
-    - run: pip install -r requirements-test.txt
+    - uses: astral-sh/setup-uv@v5
+    - run: uv pip install --system -r requirements-test.txt
     - name: Compile
       env:
         CFLAGS: -Wall -Wextra -Wno-unused-parameter -Werror
-      run: python -m build
+      run: uv build
     - name: Install
-      run: pip install dist/*.whl
+      run: uv pip install --system dist/*.whl
     - name: Test
       run: pytest test_siphashc.py README.rst
     - name: Benchmark
