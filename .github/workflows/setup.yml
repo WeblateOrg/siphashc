@@ -98,3 +98,5 @@ jobs:
     - uses: astral-sh/setup-uv@v5
     - name: Publish package distributions to PyPI
       run: uv publish --trusted-publishing always
+permissions:
+  contents: read

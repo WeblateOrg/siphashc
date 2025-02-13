@@ -36,3 +36,5 @@ jobs:
       run: pytest test_siphashc.py README.rst
     - name: Benchmark
       run: python benchmark.py
+permissions:
+  contents: read
