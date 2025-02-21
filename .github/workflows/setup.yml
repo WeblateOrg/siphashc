@@ -42,7 +42,7 @@ jobs:
         CIBW_BUILD: cp*-${{ matrix.config.platform }}
         CIBW_SKIP: cp36* cp37* cp38*
 
-    - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
+    - uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4
       with:
         path: ./wheelhouse/*.whl
         name: wheel-${{ matrix.config.platform }}
@@ -58,7 +58,7 @@ jobs:
     - uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287 # v5
     - name: build
       run: uv build --sdist
-    - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
+    - uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4
       with:
         path: dist/*.tar.gz
         name: sdist
