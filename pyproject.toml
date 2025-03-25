@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=61.2"]
+requires = ["setuptools>=78.0.2"]
 
 [project]
 classifiers = [
@@ -9,12 +9,12 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Topic :: Software Development :: Libraries :: Python Modules",
-  "License :: OSI Approved :: ISC License (ISCL)"
+  "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 description = "Python module (in c) for siphash-2-4"
 keywords = ["siphash", "siphash-2-4"]
-license = {text = "ISC"}
+license = "ISC"
+license-files = ["LICENSE"]
 name = "siphashc"
 requires-python = ">=3.9"
 version = "2.5"
