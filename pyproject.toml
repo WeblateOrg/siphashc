@@ -52,6 +52,9 @@ ignore = [
 ]
 select = ["ALL"]
 
+[tool.ruff.format]
+docstring-code-format = true
+
 [tool.ruff.lint.isort]
 known-first-party = ["siphashc"]
 known-third-party = ["pytest"]
