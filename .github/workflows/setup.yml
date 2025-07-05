@@ -38,7 +38,7 @@ jobs:
         platforms: all
 
     - name: Build wheel
-      uses: pypa/cibuildwheel@5f22145df44122af0f5a201f93cf0207171beca7 # v3.0.0
+      uses: pypa/cibuildwheel@95d2f3a92fbf80abe066b09418bbf128a8923df2 # v3.0.1
       env:
         CIBW_ARCHS: ${{ matrix.config.arch }}
         CIBW_BUILD: cp*-${{ matrix.config.platform }}
