@@ -2,6 +2,21 @@
 build-backend = "setuptools.build_meta"
 requires = ["setuptools>=78.0.2"]
 
+[dependency-groups]
+dev = [
+  {include-group = "lint"},
+  {include-group = "test"}
+]
+lint = [
+  {include-group = "pre-commit"}
+]
+pre-commit = [
+  "pre-commit==4.2.0"
+]
+test = [
+  "pytest==8.4.1"
+]
+
 [project]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -22,9 +37,6 @@ version = "2.5"
 [[project.authors]]
 email = "michal@weblate.org"
 name = "Michal Čihař"
-
-[project.optional-dependencies]
-test = ["pytest"]
 
 [project.readme]
 content-type = "text/x-rst"
