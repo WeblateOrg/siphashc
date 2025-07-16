@@ -51,7 +51,7 @@ Twitter = "https://twitter.com/WeblateOrg"
 
 [tool.cibuildwheel]
 test-command = "pytest {project}/test_siphashc.py {project}/README.rst"
-test-extras = "test"
+test-requires = "pytest"
 
 [tool.isort]
 profile = "black"
