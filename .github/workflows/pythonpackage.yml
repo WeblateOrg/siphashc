@@ -31,8 +31,10 @@ jobs:
       env:
         CFLAGS: -Wall -Wextra -Wno-unused-parameter -Werror
       run: uv build
+    - name: Install deps
+      run: uv sync --only-group test
     - name: Install
-      run: uv pip install --system dist/*.whl
+      run: uv pip install dist/*.whl
     - name: Test
       run: uv run --only-group test pytest test_siphashc.py README.rst
     - name: Benchmark
