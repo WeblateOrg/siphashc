@@ -38,6 +38,6 @@ jobs:
     - name: Test
       run: uv run --only-group test pytest test_siphashc.py README.rst
     - name: Benchmark
-      run: python benchmark.py
+      run: uv run benchmark.py
 permissions:
   contents: read
