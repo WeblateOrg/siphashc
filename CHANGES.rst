@@ -1,16 +1,11 @@
 Changes
 =======
 
-2.7
----
-
-* Dropped support for Python 3.9.
-* Python 3.14 compatiblity.
-
 2.6
 ---
 
-* Dropped support for Python 3.8.
+* Dropped support for Python 3.8 and 3.9.
+* Python 3.14 compatiblity.
 
 2.5
 ---
