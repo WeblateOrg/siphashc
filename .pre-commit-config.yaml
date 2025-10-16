@@ -44,8 +44,6 @@ repos:
   - id: mdformat
     additional_dependencies:
     - mdformat-gfm==1.0.0
-    - mdformat-shfmt==0.2.0
-    - mdformat_tables==1.0.0
 - repo: https://github.com/rhysd/actionlint
   rev: v1.7.8
   hooks:
