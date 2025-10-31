@@ -60,7 +60,7 @@ jobs:
         python-version: '3.14'
     - uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
       with:
-        version: 0.9.6
+        version: 0.9.7
     - name: build
       run: uv build --sdist
     - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
@@ -83,7 +83,7 @@ jobs:
         python-version: '3.14'
     - uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
       with:
-        version: 0.9.6
+        version: 0.9.7
     - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
       with:
         path: dist
@@ -106,7 +106,7 @@ jobs:
 
     - uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
       with:
-        version: 0.9.6
+        version: 0.9.7
     - name: Publish package distributions to PyPI
       run: uv publish --trusted-publishing always
 permissions:
