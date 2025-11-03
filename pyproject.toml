@@ -24,6 +24,11 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 description = "Python module (in c) for siphash-2-4"
@@ -49,9 +54,23 @@ Homepage = "https://github.com/WeblateOrg/siphashc"
 "Source Code" = "https://github.com/WeblateOrg/siphashc"
 Twitter = "https://twitter.com/WeblateOrg"
 
+[tool.check-manifest]
+ignore = [
+  "*.yaml",
+  "*.yml",
+  "benchmark.py",
+  ".editorconfig"
+]
+
+[tool.check-wheel-contents]
+ignore = ["W009", "W010"]
+
 [tool.cibuildwheel]
 test-command = "pytest {project}/test_siphashc.py {project}/README.rst"
 test-requires = "pytest"
+
+[tool.cibuildwheel.linux]
+repair-wheel-command = "auditwheel repair --strip -w {dest_dir} {wheel}"
 
 [tool.isort]
 profile = "black"
