@@ -88,8 +88,11 @@ jobs:
       with:
         path: dist
         merge-multiple: true
-    - run: uvx twine check dist/*.whl
+    - run: uvx twine check --strict dist/*
     - run: uvx abi3audit dist/*abi3*.whl
+    - run: uvx pydistcheck --inspect dist/*
+    - run: uvx check-wheel-contents dist/*.whl
+    - run: uvx check-manifest -v
 
   publish:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
