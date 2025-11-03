@@ -94,8 +94,9 @@ jobs:
     - run: uvx check-wheel-contents dist/*.whl
     - run: uvx check-manifest -v
 
-  publish:
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
+  release_pypi:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && github.repository == 'WeblateOrg/siphashc'
+    name: Publish release to PyPI
     needs:
     - check
     runs-on: ubuntu-24.04
@@ -113,5 +114,24 @@ jobs:
         version: 0.9.7
     - name: Publish package distributions to PyPI
       run: uv publish --trusted-publishing always
+
+  release_github:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && github.repository == 'WeblateOrg/siphashc'
+    runs-on: ubuntu-24.04
+    name: Create release on GitHub
+    permissions:
+      contents: write
+    needs:
+    - check
+    steps:
+    - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
+      with:
+        name: dist
+        path: dist
+    - uses: ncipollo/release-action@b7eabc95ff50cbeeedec83973935c8f306dfcd0b # v1.20.0
+      with:
+        generateReleaseNotes: true
+        artifacts: dist/*
+
 permissions:
   contents: read
