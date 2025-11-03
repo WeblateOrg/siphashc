@@ -1,6 +1,12 @@
 Changes
 =======
 
+2.7
+---
+
+* Packaging cleanups and improvements.
+* Binary wheels now use ABI3.
+
 2.6
 ---
 
