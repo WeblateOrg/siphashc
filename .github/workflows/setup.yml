@@ -104,7 +104,7 @@ jobs:
     - run: uvx abi3audit dist/*abi3*.whl
     - run: uvx pydistcheck --inspect dist/*
     - run: uvx check-wheel-contents dist/*.whl
-    - run: uvx check-manifest -v
+    - run: uvx --with pip check-manifest -v
 
   release_pypi:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && github.repository == 'WeblateOrg/siphashc'
