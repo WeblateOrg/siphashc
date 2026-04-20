@@ -96,14 +96,6 @@ max-complexity = 16
 [tool.ruff.lint.per-file-ignores]
 "benchmark.py" = ["T201"]
 
-[tool.setuptools]
-include-package-data = true
-zip-safe = true
-
-[tool.setuptools.packages.find]
-include = ["siphashc*"]
-namespaces = true
-
 [tool.rumdl]
 disable = [
   # We do not enforce heading
@@ -117,3 +109,11 @@ disable = [
   # Allow HTML
   "MD033"
 ]
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = true
+
+[tool.setuptools.packages.find]
+include = ["siphashc*"]
+namespaces = true
