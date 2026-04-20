@@ -103,3 +103,17 @@ zip-safe = true
 [tool.setuptools.packages.find]
 include = ["siphashc*"]
 namespaces = true
+
+[tool.rumdl]
+disable = [
+  # We do not enforce heading
+  "first-line-heading",
+  # Avoid length limit checks
+  "line-length"
+]
+
+[tool.rumdl.per-file-ignores]
+"README.md" = [
+  # Allow HTML
+  "MD033"
+]
