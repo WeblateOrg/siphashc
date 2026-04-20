@@ -1,1 +1,1 @@
-siphash from https://github.com/floodyberry/siphash
+siphash from <https://github.com/floodyberry/siphash>
