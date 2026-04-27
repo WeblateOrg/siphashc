@@ -11,7 +11,7 @@ lint = [
   {include-group = "pre-commit"}
 ]
 pre-commit = [
-  "prek==0.3.10"
+  "prek==0.3.11"
 ]
 test = [
   "pytest==9.0.3"
