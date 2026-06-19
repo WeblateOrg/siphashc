@@ -14,7 +14,7 @@ pre-commit = [
   "prek==0.4.5"
 ]
 test = [
-  "pytest==9.1.0"
+  "pytest==9.1.1"
 ]
 
 [project]
