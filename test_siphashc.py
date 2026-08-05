@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import sys
+import sysconfig
 import unittest
 
 import pytest
@@ -11,6 +13,14 @@ from siphashc import siphash
 
 class TestSiphashC(unittest.TestCase):
     """Test for siphashc module."""
+
+    @pytest.mark.skipif(
+        not sysconfig.get_config_var("Py_GIL_DISABLED"),
+        reason="requires free-threaded Python",
+    )
+    def test_gil_disabled(self: TestSiphashC) -> None:
+        """Test that importing the module does not enable the GIL."""
+        assert not sys._is_gil_enabled()  # noqa: SLF001
 
     def test_hash(self: TestSiphashC) -> None:
         """Test simple hashing."""
