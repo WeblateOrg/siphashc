@@ -24,9 +24,9 @@
 
 #define PY_SSIZE_T_CLEAN
 
+#include <Python.h>
 #include <stdlib.h>
 #include <string.h>
-#include <Python.h>
 #include "siphash/siphash.h"
 
 static PyObject *pysiphash(PyObject *self, PyObject *args) {

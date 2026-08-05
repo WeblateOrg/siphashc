@@ -6,6 +6,7 @@ Changes
 
 * Packaging cleanups and improvements.
 * Binary wheels now use ABI3.
+* Python 3.15 compatibility.
 
 2.6
 ---
