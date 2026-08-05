@@ -69,6 +69,26 @@ static PyMethodDef siphashc_methods[] = {
     {NULL, NULL, 0, NULL} /* sentinel */
 };
 
+#ifdef Py_TARGET_ABI3T
+
+PyABIInfo_VAR(abi_info);
+
+static PySlot siphashc_slots[] = {
+    PySlot_STATIC_DATA(Py_mod_abi, &abi_info),
+    PySlot_STATIC_DATA(Py_mod_name, "siphashc"),
+    PySlot_STATIC_DATA(Py_mod_methods, siphashc_methods),
+    PySlot_STATIC_DATA(Py_mod_gil, Py_MOD_GIL_NOT_USED),
+    PySlot_END,
+};
+
+PyMODEXPORT_FUNC
+PyModExport_siphashc(void)
+{
+    return siphashc_slots;
+}
+
+#else
+
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
     "siphashc",
@@ -84,5 +104,17 @@ static struct PyModuleDef moduledef = {
 PyObject *
 PyInit_siphashc(void)
 {
-    return PyModule_Create(&moduledef);
+    PyObject *module = PyModule_Create(&moduledef);
+
+#ifdef Py_GIL_DISABLED
+    if (module != NULL &&
+            PyUnstable_Module_SetGIL(module, Py_MOD_GIL_NOT_USED) < 0) {
+        Py_DECREF(module);
+        return NULL;
+    }
+#endif
+
+    return module;
 }
+
+#endif
