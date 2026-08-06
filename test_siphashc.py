@@ -116,8 +116,8 @@ class TestSiphashC(unittest.TestCase):
             0xE51B38608EF25F57,
             0x958A324CEB064572,
         ]
-        k = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f"
-        message = ""
+        k = bytes(range(16))
+        message = b""
         for i in range(64):
             assert siphash(k, message) == vectors[i]
-            message += chr(i)
+            message += bytes((i,))
