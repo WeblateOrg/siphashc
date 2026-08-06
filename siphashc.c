@@ -29,7 +29,38 @@
 #include <string.h>
 #include "siphash/siphash.h"
 
+#define SIPHASH_GIL_THRESHOLD 8192
+
+static int get_immutable_data(
+        PyObject *object,
+        const char *argument_name,
+        const char **data,
+        Py_ssize_t *size) {
+    if (PyBytes_Check(object)) {
+        char *bytes_data;
+
+        if (PyBytes_AsStringAndSize(object, &bytes_data, size) < 0) {
+            return 0;
+        }
+        *data = bytes_data;
+        return 1;
+    }
+
+    if (PyUnicode_Check(object)) {
+        *data = PyUnicode_AsUTF8AndSize(object, size);
+        return *data != NULL;
+    }
+
+    PyErr_Format(
+        PyExc_TypeError,
+        "%s must be str or bytes",
+        argument_name);
+    return 0;
+}
+
 static PyObject *pysiphash(PyObject *self, PyObject *args) {
+    PyObject *key_object;
+    PyObject *plaintext_object;
     const char *key = NULL;
     Py_ssize_t key_sz;
     const char *plaintext = NULL;
@@ -37,8 +68,18 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
     uint64_t hash;
 
     if (!PyArg_ParseTuple(
-            args, "s#s#:siphash",
-            &key, &key_sz, &plaintext, &plain_sz)) {
+            args, "OO:siphash",
+            &key_object, &plaintext_object)) {
+        return NULL;
+    }
+
+    /* Both objects own immutable storage and args keeps them alive. */
+    if (!get_immutable_data(key_object, "key", &key, &key_sz) ||
+            !get_immutable_data(
+                plaintext_object,
+                "plaintext",
+                &plaintext,
+                &plain_sz)) {
         return NULL;
     }
 
@@ -49,10 +90,26 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
         return NULL;
     }
 
+#ifdef Py_GIL_DISABLED
     hash = siphash(
-        (const unsigned char*)key,
-        (const unsigned char*)plaintext,
+        (const unsigned char *)key,
+        (const unsigned char *)plaintext,
         plain_sz);
+#else
+    if (plain_sz >= SIPHASH_GIL_THRESHOLD) {
+        Py_BEGIN_ALLOW_THREADS
+        hash = siphash(
+            (const unsigned char *)key,
+            (const unsigned char *)plaintext,
+            plain_sz);
+        Py_END_ALLOW_THREADS
+    } else {
+        hash = siphash(
+            (const unsigned char *)key,
+            (const unsigned char *)plaintext,
+            plain_sz);
+    }
+#endif
 
     return PyLong_FromUnsignedLongLong(hash);
 }
