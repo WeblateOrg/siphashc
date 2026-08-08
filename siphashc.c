@@ -30,6 +30,12 @@
 #include "siphash/siphash.h"
 
 #define SIPHASH_GIL_THRESHOLD 8192
+#if PY_VERSION_HEX < 0x030B0000
+#define SIPHASHC_PYC_FUNCTION_CAST(func) \
+    ((PyCFunction)(void (*)(void))(func))
+#else
+#define SIPHASHC_PYC_FUNCTION_CAST(func) _PyCFunction_CAST(func)
+#endif
 
 static int get_immutable_data(
         PyObject *object,
@@ -58,7 +64,10 @@ static int get_immutable_data(
     return 0;
 }
 
-static PyObject *pysiphash(PyObject *self, PyObject *args) {
+static PyObject *pysiphash(
+        PyObject *self,
+        PyObject *const *args,
+        Py_ssize_t nargs) {
     PyObject *key_object;
     PyObject *plaintext_object;
     const char *key = NULL;
@@ -67,13 +76,17 @@ static PyObject *pysiphash(PyObject *self, PyObject *args) {
     Py_ssize_t plain_sz;
     uint64_t hash;
 
-    if (!PyArg_ParseTuple(
-            args, "OO:siphash",
-            &key_object, &plaintext_object)) {
+    if (nargs != 2) {
+        PyErr_Format(
+            PyExc_TypeError,
+            "siphash() takes exactly 2 arguments (%zd given)",
+            nargs);
         return NULL;
     }
+    key_object = args[0];
+    plaintext_object = args[1];
 
-    /* Both objects own immutable storage and args keeps them alive. */
+    /* Both objects own immutable storage and remain alive for the call. */
     if (!get_immutable_data(key_object, "key", &key, &key_sz) ||
             !get_immutable_data(
                 plaintext_object,
@@ -122,7 +135,8 @@ static char siphash_docstring[] = ""
     "returns 64-bit output (python Long)\n";
 
 static PyMethodDef siphashc_methods[] = {
-    {"siphash", pysiphash, METH_VARARGS, siphash_docstring},
+    {"siphash", SIPHASHC_PYC_FUNCTION_CAST(pysiphash), METH_FASTCALL,
+     siphash_docstring},
     {NULL, NULL, 0, NULL} /* sentinel */
 };
 

@@ -5,3 +5,4 @@ __pycache__
 /MANIFEST
 /siphashc*.so
 *.py[co]
+/uv.lock

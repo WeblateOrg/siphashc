@@ -82,6 +82,23 @@ class TestSiphashC(unittest.TestCase):
             with pytest.raises(TypeError, match="plaintext must be str or bytes"):
                 siphash(b"0123456789ABCDEF", plaintext)
 
+    def test_argument_count(self: TestSiphashC) -> None:
+        """Test positional argument count errors."""
+        for args in ((), (b"key",), (b"key", b"plaintext", b"extra")):
+            with pytest.raises(TypeError) as error:
+                siphash(*args)
+            assert str(error.value) == (
+                f"siphash() takes exactly 2 arguments ({len(args)} given)"
+            )
+
+    def test_rejects_keywords(self: TestSiphashC) -> None:
+        """Test rejection of keyword arguments."""
+        with pytest.raises(
+            TypeError,
+            match=r"siphash\(\) takes no keyword arguments",
+        ):
+            siphash(key=b"0123456789ABCDEF", plaintext=b"a")
+
     @pytest.mark.skipif(
         bool(sysconfig.get_config_var("Py_GIL_DISABLED")),
         reason="requires a GIL-enabled Python",
