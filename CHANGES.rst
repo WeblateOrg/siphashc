@@ -1,6 +1,14 @@
 Changes
 =======
 
+2.8
+---
+
+* Added support for Python 3.15, including free-threaded builds.
+* Fixed SipHash input decoding on platforms with different alignment or byte
+  order.
+* Improved hashing performance and enabled concurrent hashing of large inputs.
+
 2.7
 ---
 
