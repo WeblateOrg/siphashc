@@ -81,10 +81,10 @@ docstring-code-format = true
 
 [tool.ruff.lint]
 ignore = [
-  "CPY001",  # TODO: update copyright info
-  "S101",  # CONFIG: using pytest
-  "D203",  # CONFIG: incompatible with D211
-  "D212"  # CONFIG: incompatible with D213
+  "CPY001", # TODO: update copyright info
+  "S101", # CONFIG: using pytest
+  "D203", # CONFIG: incompatible with D211
+  "D212" # CONFIG: incompatible with D213
 ]
 select = ["ALL"]
 
