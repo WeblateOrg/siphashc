@@ -59,7 +59,7 @@ jobs:
         name: wheel-${{ matrix.config.platform }}
 
   sdist:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
@@ -83,7 +83,7 @@ jobs:
     needs:
     - sdist
     - build_wheels
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
@@ -111,7 +111,7 @@ jobs:
     name: Publish release to PyPI
     needs:
     - check
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       # this permission is mandatory for trusted publishing
       id-token: write
@@ -130,7 +130,7 @@ jobs:
 
   release_github:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && github.repository == 'WeblateOrg/siphashc'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     name: Create release on GitHub
     permissions:
       contents: write
