@@ -1,12 +1,11 @@
 siphashc
 ========
 
-siphashc is a Python module (in c) for siphash-2-4
-
 .. image:: https://img.shields.io/pypi/v/siphashc.svg
     :target: https://pypi.python.org/pypi/siphashc
     :alt: PyPI package
 
+siphashc is a Python module (in c) for siphash-2-4
 
 .. image:: https://s.weblate.org/cdn/Logo-Darktext-borders.png
    :target: https://weblate.org/
