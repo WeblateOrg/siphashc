@@ -5,7 +5,7 @@ siphashc
     :target: https://pypi.python.org/pypi/siphashc
     :alt: PyPI package
 
-siphashc is a Python module (in c) for siphash-2-4
+siphashc is a Python C extension implementing SipHash-2-4.
 
 .. image:: https://s.weblate.org/cdn/Logo-Darktext-borders.png
    :target: https://weblate.org/
