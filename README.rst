@@ -7,12 +7,13 @@ siphashc is a Python module (in c) for siphash-2-4
     :target: https://pypi.python.org/pypi/siphashc
     :alt: PyPI package
 
+
 .. image:: https://s.weblate.org/cdn/Logo-Darktext-borders.png
    :target: https://weblate.org/
    :alt: Weblate
    :height: 55px
 
-> Maintained by `Weblate <https://weblate.org/>`_ — a privacy-respecting localization platform built on open-source foundations.
+Maintained by `Weblate <https://weblate.org/>`_ — a privacy-respecting localization platform built on open-source foundations.
 
 Installation
 ~~~~~~~~~~~~
