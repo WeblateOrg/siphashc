@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.9.0
+-----
+
+* Added binary wheels for Linux on RISC-V 64-bit (riscv64).
+
 2.8
 ---
 
