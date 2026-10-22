@@ -1,6 +1,11 @@
 Changes
 =======
 
+2.9.1
+-----
+
+* Fixed GitHub publishing workflow.
+
 2.9.0
 -----
 
